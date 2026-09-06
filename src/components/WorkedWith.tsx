@@ -15,7 +15,7 @@ export default function WorkedWith() {
               {org.note ? <p className={styles.note}>{org.note}</p> : null}
             </>
           );
-          return org.href ? (
+          return "href" in org ? (
             <Link key={org.name} href={org.href} className={styles.cell} data-cursor="Case">
               {inner}
             </Link>
