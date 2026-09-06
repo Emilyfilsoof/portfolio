@@ -1,0 +1,121 @@
+.footer {
+  margin-top: 0;
+  border-top: var(--rule);
+  background: var(--ink);
+  color: var(--paper);
+}
+
+.inner {
+  padding-block: clamp(40px, 7vw, 110px) clamp(24px, 3vw, 40px);
+  display: flex;
+  flex-direction: column;
+  gap: clamp(26px, 4vw, 60px);
+}
+
+.label {
+  font-family: var(--mono);
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--accent);
+}
+
+.email {
+  display: inline-block;
+  font-weight: 900;
+  font-stretch: 112%;
+  font-size: clamp(26px, 7.4vw, 122px);
+  line-height: 0.9;
+  letter-spacing: -0.04em;
+  text-transform: uppercase;
+  word-break: break-word;
+  transition: color var(--dur) var(--ease), transform 400ms var(--ease-out);
+}
+
+.email:hover {
+  color: var(--accent);
+}
+
+.foot {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 20px 40px;
+  border-top: 1px solid rgba(244, 242, 236, 0.28);
+  padding-top: 22px;
+}
+
+.actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.primary,
+.ghost,
+.link {
+  font-family: var(--mono);
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  transition: color var(--dur) var(--ease), background var(--dur) var(--ease),
+    transform 400ms var(--ease-out);
+}
+
+.primary {
+  background: var(--accent);
+  color: var(--ink);
+  padding: 14px 22px;
+}
+
+.ghost {
+  border: 1px solid var(--paper);
+  color: var(--paper);
+  padding: 14px 22px;
+}
+
+.ghost:hover {
+  background: var(--paper);
+  color: var(--ink);
+}
+
+.links {
+  display: flex;
+  gap: 18px;
+}
+
+.link {
+  color: rgba(244, 242, 236, 0.72);
+}
+
+.link:hover {
+  color: var(--accent);
+}
+
+.band {
+  background: var(--accent);
+  color: var(--ink);
+  padding: 12px var(--margin);
+  display: flex;
+  justify-content: space-between;
+  gap: 20px;
+  font-family: var(--mono);
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+}
+
+.bandMeta {
+  white-space: nowrap;
+}
+
+@media (max-width: 640px) {
+  .band {
+    flex-direction: column;
+    gap: 6px;
+  }
+}

@@ -1,0 +1,283 @@
+.blocks {
+  display: flex;
+  flex-direction: column;
+  gap: clamp(30px, 4vw, 54px);
+}
+
+/* Every block is one row of the case column; the label sits above its
+   content rather than in a side rail. */
+.block {
+  min-width: 0;
+}
+
+.spine {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.metaCol,
+.contentCol {
+  min-width: 0;
+}
+
+/* Prose sections are the rhythm of the case: hairline rule, label, heading. */
+.ruled {
+  border-top: var(--rule);
+  padding-top: 20px;
+  max-width: 66ch;
+}
+
+.blocks :global(.label) {
+  color: var(--field-ink);
+}
+
+.figureStack {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 30px;
+}
+
+.wide {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.wideLabel {
+  margin: 0;
+}
+
+.lead {
+  font-size: clamp(17px, 1.5vw, 22px);
+  font-weight: 600;
+  line-height: 1.5;
+  letter-spacing: -0.005em;
+  max-width: 60ch;
+}
+
+.statement {
+  max-width: 40ch;
+}
+
+.statement p {
+  font-weight: 900;
+  font-stretch: 112%;
+  font-size: clamp(22px, 2.8vw, 42px);
+  line-height: 0.98;
+  letter-spacing: -0.035em;
+  text-transform: uppercase;
+}
+
+.attribution {
+  margin-top: 14px;
+  font-family: var(--mono);
+  font-size: 11px !important;
+  font-weight: 700 !important;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+}
+
+.heading {
+  font-size: clamp(20px, 2.3vw, 32px);
+  line-height: 0.98;
+  letter-spacing: -0.03em;
+  max-width: 34ch;
+}
+
+.p {
+  font-size: 14px;
+  line-height: 1.65;
+  max-width: 68ch;
+}
+
+.p + .p {
+  margin-top: 12px;
+}
+
+/* Two-up prose: no frame, just two columns of label + text. */
+.splitGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(300px, 100%), 1fr));
+  gap: 32px;
+}
+
+.splitCell {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.splitLabel {
+  font-family: var(--mono);
+  font-size: 10px;
+  font-weight: 700;
+  line-height: 1.6;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+}
+
+/* Quotes are a solid block of ink. */
+.quote {
+  background: var(--field-ink);
+  color: var(--field-bg);
+  padding: clamp(20px, 2.6vw, 36px);
+  margin: 0;
+  max-width: 56ch;
+}
+
+.quoteText {
+  font-weight: 900;
+  font-stretch: 112%;
+  font-size: clamp(20px, 2.2vw, 32px);
+  line-height: 1.02;
+  letter-spacing: -0.03em;
+  text-transform: uppercase;
+}
+
+.quoteFoot {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  margin-top: 12px;
+  font-family: var(--mono);
+  font-size: 12px;
+  line-height: 1.6;
+  opacity: 0.72;
+}
+
+.original {
+  font-style: italic;
+}
+
+/* Term/detail lists read as a two-column grid, not a table. */
+.dl {
+  margin: 0;
+  display: grid;
+  grid-template-columns: 170px minmax(0, 1fr);
+  gap: 14px 24px;
+  align-items: baseline;
+}
+
+.dlRow {
+  display: contents;
+}
+
+.dt {
+  font-size: 15px;
+  font-weight: 600;
+}
+
+.dd {
+  margin: 0;
+  font-size: 14px;
+  line-height: 1.6;
+}
+
+.tableWrap {
+  overflow-x: auto;
+}
+
+.table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 14px;
+}
+
+.table th {
+  text-align: left;
+  background: var(--field-ink);
+  color: var(--field-bg);
+  font-family: var(--mono);
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  padding: 10px 12px;
+  white-space: nowrap;
+}
+
+.table td {
+  padding: 11px 12px;
+  border-bottom: var(--rule-hair);
+  vertical-align: top;
+}
+
+.pre {
+  margin: 0;
+  border: var(--rule);
+  padding: 16px 18px;
+  overflow-x: auto;
+  font-family: var(--mono);
+  font-size: 13px;
+  line-height: 1.7;
+}
+
+.caption {
+  margin-top: 10px;
+  font-family: var(--mono);
+  font-size: 11px;
+  line-height: 1.6;
+  letter-spacing: 0.06em;
+  color: var(--grey);
+  max-width: 62ch;
+}
+
+.bigLink {
+  display: inline-block;
+  font-weight: 900;
+  font-stretch: 112%;
+  font-size: clamp(20px, 2.2vw, 30px);
+  letter-spacing: -0.03em;
+  text-transform: uppercase;
+  border-bottom: 1.5px solid var(--field-ink);
+  padding-bottom: 3px;
+  transition: color var(--dur) var(--ease), border-color var(--dur) var(--ease);
+}
+
+.bigLink:hover {
+  color: var(--accent);
+  border-bottom-color: var(--accent);
+}
+
+/* Credits close the case: label column, then role, context and lists. */
+.credits {
+  border-top: var(--rule-hair);
+  padding-top: 22px;
+  max-width: 80ch;
+}
+
+.creditsContext {
+  color: var(--grey);
+}
+
+.creditsGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(220px, 100%), 1fr));
+  gap: 24px;
+  margin-top: 22px;
+}
+
+.ul {
+  list-style: none;
+  margin: 10px 0 0;
+  padding: 0;
+  font-size: 14px;
+  line-height: 1.6;
+}
+
+.ul li {
+  border-bottom: var(--rule-hair);
+  padding-block: 5px;
+}
+
+@media (max-width: 640px) {
+  .dl {
+    grid-template-columns: 1fr;
+    gap: 4px 0;
+  }
+
+  .dlRow + .dlRow .dt {
+    margin-top: 14px;
+  }
+}

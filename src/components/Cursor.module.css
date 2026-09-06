@@ -1,0 +1,31 @@
+.ring {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 90;
+  pointer-events: none;
+  width: 22px;
+  height: 22px;
+  margin: -11px 0 0 -11px;
+  border: 1.5px solid var(--cursor-ink, var(--ink));
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--mono);
+  font-size: 8px;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--cursor-ink, var(--ink));
+  opacity: 0;
+  transition: width 300ms var(--ease), height 300ms var(--ease), margin 300ms var(--ease),
+    background 300ms var(--ease), border-color 300ms var(--ease), color 300ms var(--ease),
+    opacity 300ms var(--ease);
+}
+
+@media (hover: none), (pointer: coarse) {
+  .ring {
+    display: none;
+  }
+}

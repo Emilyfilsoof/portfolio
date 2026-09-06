@@ -1,0 +1,141 @@
+.figure {
+  margin: 0;
+}
+
+.img {
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+  border: var(--rule);
+}
+
+
+.containFrame {
+  width: 100%;
+  height: var(--figure-frame-height, 520px);
+  border: var(--rule);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  background: var(--field-bg);
+}
+
+.containedImg {
+  display: block;
+  max-width: 100%;
+  max-height: 100%;
+  width: auto;
+  height: auto;
+  object-fit: contain;
+}
+
+@media (max-width: 900px) {
+  .containFrame {
+    height: auto;
+    min-height: 0;
+  }
+
+  .containedImg {
+    width: 100%;
+    max-height: none;
+  }
+}
+
+.placeholder {
+  width: 100%;
+  border: var(--rule);
+  background: repeating-linear-gradient(
+    135deg,
+    rgba(32, 30, 29, 0.045),
+    rgba(32, 30, 29, 0.045) 10px,
+    transparent 10px,
+    transparent 20px
+  );
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 16px;
+  padding: 14px 16px;
+  min-height: 160px;
+}
+
+.placeholder.dark {
+  background: #0f0f11;
+  border-color: rgba(244, 242, 240, 0.5);
+  color: #efece9;
+}
+
+.placeholderTop {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 12px;
+  border-bottom: var(--rule-hair);
+  padding-bottom: 8px;
+}
+
+.dark .placeholderTop {
+  border-bottom-color: rgba(244, 242, 240, 0.3);
+}
+
+.slot,
+.id {
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+}
+
+.slot {
+  color: var(--field);
+}
+
+.id {
+  font-family: ui-monospace, Menlo, monospace;
+  letter-spacing: 0.04em;
+  text-transform: none;
+  color: var(--grey);
+}
+
+.dark .id {
+  color: rgba(244, 242, 240, 0.7);
+}
+
+.placeholderBody {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.need {
+  font-size: 14px;
+  line-height: 1.5;
+  max-width: 52ch;
+}
+
+.path {
+  font-family: ui-monospace, Menlo, monospace;
+  font-size: 11.5px;
+  color: var(--grey);
+}
+
+.dark .path {
+  color: rgba(244, 242, 240, 0.6);
+}
+
+.caption {
+  display: flex;
+  gap: 10px;
+  margin-top: 10px;
+  font-size: 13px;
+  line-height: 1.5;
+  color: var(--grey);
+  max-width: 60ch;
+}
+
+.num {
+  font-weight: 600;
+  color: var(--field);
+  font-variant-numeric: tabular-nums;
+}

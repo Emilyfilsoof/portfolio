@@ -1,0 +1,159 @@
+.case {
+  background: var(--field-bg);
+  color: var(--field-ink);
+  min-height: 100svh;
+}
+
+/* A case on a dark ground inverts the greys and rules it inherits. */
+.case[data-tone='dark'] {
+  --grey: rgba(244, 242, 236, 0.62);
+  --rule: 1.5px solid rgba(244, 242, 236, 0.75);
+  --rule-hair: 1px solid rgba(244, 242, 236, 0.22);
+}
+
+/* Sticky bar: always light, whatever ground the case sits on. */
+.bar {
+  position: sticky;
+  top: 0;
+  z-index: 60;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+  padding: 14px clamp(18px, 3vw, 40px);
+  background: var(--paper);
+  color: var(--ink);
+  border-bottom: 1.5px solid var(--ink);
+}
+
+.barLabel {
+  font-family: var(--mono);
+  font-size: 10px;
+  font-weight: 700;
+  line-height: 1.6;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+}
+
+.barClose {
+  background: var(--accent);
+  color: var(--ink);
+  padding: 12px 18px;
+  font-family: var(--mono);
+  font-size: 10px;
+  font-weight: 700;
+  line-height: 1;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  transition: background var(--dur) var(--ease), color var(--dur) var(--ease);
+}
+
+.barClose:hover {
+  background: var(--ink);
+  color: var(--paper);
+}
+
+/* One centred column — the whole case reads as a single flow. */
+.column {
+  max-width: 1180px;
+  margin-inline: auto;
+  padding: clamp(30px, 5vw, 76px) clamp(18px, 3vw, 40px) 120px;
+  display: flex;
+  flex-direction: column;
+  gap: clamp(30px, 4vw, 54px);
+}
+
+.title {
+  font-size: clamp(30px, 5.4vw, 86px);
+  line-height: 0.86;
+  letter-spacing: -0.04em;
+  max-width: 18ch;
+}
+
+.summary {
+  max-width: 60ch;
+  font-size: clamp(17px, 1.4vw, 21px);
+  font-weight: 600;
+  line-height: 1.5;
+}
+
+/* The dark case: the sticky bar stays light, so its own ink is stated here
+   rather than inherited from the field. */
+.case[data-tone='dark'] .bar {
+  color: var(--ink);
+}
+
+.case[data-tone='dark'] .barClose:hover {
+  background: var(--ink);
+  color: var(--paper);
+}
+
+.end {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 20px 40px;
+  border-top: var(--rule);
+  padding-top: 22px;
+}
+
+.back {
+  background: var(--field-ink);
+  color: var(--field-bg);
+  padding: 15px 22px;
+  font-family: var(--mono);
+  font-size: 10px;
+  font-weight: 700;
+  line-height: 1;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  transition: background var(--dur) var(--ease), color var(--dur) var(--ease);
+}
+
+.back:hover {
+  background: var(--accent);
+  color: var(--ink);
+}
+
+.nextLink {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  text-align: right;
+  align-items: flex-end;
+}
+
+.nextLabel {
+  font-family: var(--mono);
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+}
+
+.nextTitle {
+  font-weight: 900;
+  font-stretch: 112%;
+  font-size: clamp(20px, 2.4vw, 34px);
+  line-height: 0.92;
+  letter-spacing: -0.035em;
+  text-transform: uppercase;
+  transition: color var(--dur) var(--ease);
+}
+
+.nextLink:hover .nextTitle {
+  color: var(--accent);
+}
+
+@media (max-width: 640px) {
+  .end {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .nextLink {
+    text-align: left;
+    align-items: flex-start;
+  }
+}

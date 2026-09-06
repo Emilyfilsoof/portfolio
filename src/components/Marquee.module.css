@@ -1,0 +1,26 @@
+.band {
+  background: var(--ink);
+  color: var(--paper);
+  padding-block: clamp(16px, 2vw, 26px);
+  overflow: hidden;
+  border-top: var(--rule);
+}
+
+.track {
+  display: flex;
+  white-space: nowrap;
+  will-change: transform;
+}
+
+.line {
+  white-space: nowrap;
+  text-wrap: nowrap;
+  flex: 0 0 auto;
+  font-weight: 900;
+  font-stretch: 112%;
+  font-size: clamp(28px, 4.6vw, 74px);
+  line-height: 1;
+  letter-spacing: -0.03em;
+  text-transform: uppercase;
+  padding-right: 0.4em;
+}

@@ -1,0 +1,35 @@
+.band {
+  background: var(--accent);
+  color: var(--ink);
+  border-top: var(--rule);
+  border-bottom: var(--rule);
+  padding: clamp(34px, 5vw, 80px) var(--margin);
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(210px, 100%), 1fr));
+  gap: clamp(22px, 3vw, 44px);
+}
+
+.cell {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.number {
+  font-weight: 900;
+  font-stretch: 112%;
+  font-size: clamp(38px, 5.6vw, 100px);
+  line-height: 0.85;
+  letter-spacing: -0.04em;
+  white-space: nowrap;
+  font-variant-numeric: tabular-nums;
+}
+
+.label {
+  font-family: var(--mono);
+  font-size: 10px;
+  font-weight: 700;
+  line-height: 1.6;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+}
