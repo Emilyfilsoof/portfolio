@@ -7,8 +7,7 @@
 export const stats = [
   { value: 4, suffix: '', label: 'Years in digital design' },
   { value: 5, suffix: '', label: 'Organisations worked with' },
-  { value: 3, suffix: '+', label: 'Websites designed & launched' },
-  { value: 500, suffix: 'K+', label: 'DKK in funding supported' },
+  { value: 3, suffix: '', label: 'Websites designed & launched' },
 ] as const;
 
 export const workedWith = [
