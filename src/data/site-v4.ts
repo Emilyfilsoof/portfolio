@@ -20,7 +20,6 @@ export const alsoWorkedWith = [
   'Duus Partners',
   'Bæredygtigt Kulturliv NU',
   'Kollab',
-  'Bæredygtig Handling Nu',
 ] as const;
 
 /** Hero positioning line, set as one sentence rather than derived from prose. */
