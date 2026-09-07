@@ -129,12 +129,21 @@
   gap: 12px 32px;
 }
 
+/* ─── About ──────────────────────────────────────────────────────────────
+   One voice, three movements: headline, portrait + opening, then two ruled
+   columns and a closing line. */
 .about {
   padding-block: clamp(40px, 6vw, 96px);
   border-top: var(--rule);
   display: flex;
   flex-direction: column;
   gap: clamp(22px, 3vw, 40px);
+}
+
+.aboutHeadline {
+  font-size: clamp(34px, 6.4vw, 110px);
+  line-height: 0.86;
+  letter-spacing: -0.045em;
 }
 
 .aboutRow {
@@ -192,19 +201,60 @@
 .aboutText {
   flex: 1 1 340px;
   min-width: 0;
-  max-width: 66ch;
+  max-width: 58ch;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.aboutLead {
+  font-size: clamp(19px, 1.9vw, 27px);
+  font-weight: 700;
+  line-height: 1.3;
+  letter-spacing: -0.015em;
+}
+
+.aboutBody {
+  font-size: 15px;
+  line-height: 1.7;
+}
+
+.aboutCols {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(300px, 100%), 1fr));
+  gap: clamp(20px, 2.6vw, 40px);
+}
+
+.aboutCol {
+  border-top: var(--rule);
+  padding-top: 16px;
   display: flex;
   flex-direction: column;
   gap: 14px;
 }
 
-.aboutLead {
-  font-size: clamp(17px, 1.5vw, 21px);
+.aboutColLabel {
+  font-family: var(--mono);
+  font-size: 10px;
   font-weight: 700;
-  line-height: 1.45;
+  line-height: 1;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
 }
 
-.aboutBody {
-  font-size: 15px;
-  line-height: 1.65;
+.aboutStatement {
+  font-size: clamp(17px, 1.5vw, 22px);
+  font-weight: 600;
+  line-height: 1.35;
+  letter-spacing: -0.01em;
+}
+
+.aboutClosing {
+  border-top: var(--rule);
+  padding-top: 20px;
+  max-width: 48ch;
+  font-size: clamp(19px, 2vw, 30px);
+  font-weight: 700;
+  line-height: 1.28;
+  letter-spacing: -0.02em;
 }

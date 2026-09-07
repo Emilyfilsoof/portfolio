@@ -2,10 +2,13 @@ import Link from 'next/link';
 import { alsoWorkedWith, workedWith } from '@/data/site-v4';
 import styles from './WorkedWith.module.css';
 
-/** The two organisations worth naming in display type. */
+/**
+ * The two organisations worth naming in display type, on the cyan ground.
+ * Full-bleed, so it does not take the page's max-width.
+ */
 export default function WorkedWith() {
   return (
-    <section className={`page ${styles.wrap}`} data-bg="#f4f2ec" data-ink="#0c0c0c">
+    <section className={styles.wrap} data-bg="#00e5ff" data-ink="#0c0c0c">
       <p className="label label-ink">Worked with</p>
       <div className={styles.grid}>
         {workedWith.map((org) => {

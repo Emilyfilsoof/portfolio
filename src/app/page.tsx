@@ -1,12 +1,11 @@
 import { Fragment } from 'react';
 import Marquee from '@/components/Marquee';
 import WorkTiles from '@/components/WorkTiles';
-import Stats from '@/components/Stats';
 import WorkedWith from '@/components/WorkedWith';
 import Scramble from '@/components/Scramble';
 import { projects } from '@/data/projects';
 import { profile } from '@/data/profile';
-import { heroKicker, heroMeta, heroName, manifest, positioning } from '@/data/site-v4';
+import { about, heroKicker, heroMeta, heroName, manifest, positioning } from '@/data/site-v4';
 import styles from './page.module.css';
 
 /** Words stagger in after the intro plate lifts; see globals.css .word */
@@ -74,11 +73,13 @@ export default function HomePage() {
         <WorkTiles projects={projects} />
       </section>
 
-      <Stats />
       <WorkedWith />
 
       <section className={`page ${styles.about}`} id="about" data-bg="#f4f2ec" data-ink="#0c0c0c">
         <Scramble className="label label-ink" text="About" />
+
+        <h2 className={styles.aboutHeadline}>{about.headline}</h2>
+
         <div className={styles.aboutRow}>
           <div className={styles.portraitCol}>
             {/* eslint-disable-next-line @next/next/no-img-element */}
@@ -96,14 +97,28 @@ export default function HomePage() {
             </div>
           </div>
           <div className={styles.aboutText}>
-            <p className={styles.aboutLead}>{profile.intro}</p>
-            {profile.aboutParagraphs.slice(1).map((paragraph) => (
-              <p key={paragraph} className={styles.aboutBody}>
-                {paragraph}
-              </p>
-            ))}
+            <p className={styles.aboutLead}>{about.lead}</p>
+            <p className={styles.aboutBody}>{about.intro}</p>
           </div>
         </div>
+
+        <div className={styles.aboutCols}>
+          {about.columns.map((column) => (
+            <div key={column.label} className={styles.aboutCol}>
+              <p className={styles.aboutColLabel}>{column.label}</p>
+              {column.body.map((paragraph) => (
+                <p key={paragraph} className={styles.aboutBody}>
+                  {paragraph}
+                </p>
+              ))}
+              {column.statement ? (
+                <p className={styles.aboutStatement}>{column.statement}</p>
+              ) : null}
+            </div>
+          ))}
+        </div>
+
+        <p className={styles.aboutClosing}>{about.closing}</p>
       </section>
     </>
   );
