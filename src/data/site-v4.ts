@@ -24,7 +24,7 @@ export const alsoWorkedWith = [
 
 /** Hero positioning line, set as one sentence rather than derived from prose. */
 export const positioning =
-  'DIGITAL PRODUCT DESIGNER WORKING ACROSS UX, INTERACTION & EMERGING TECHNOLOGY';
+  'DIGITAL DESIGNER WORKING ACROSS UX, INTERACTION & EMERGING TECHNOLOGY';
 
 /** Top row of the hero. The site has no separate navigation bar. */
 export const heroName = ['Emily Rose', 'Shereen Filsoof'] as const;
@@ -67,7 +67,7 @@ export const about: {
   closing: string;
 } = {
   headline: 'Hi, I’m Emily.',
-  lead: 'I’m a Digital Product Designer, but I’ve never been particularly good at staying in one box.',
+  lead: 'I’m a Digital Designer, but I’ve never been particularly good at staying in one box.',
   intro:
     'My background is in Information Studies and Digital Design, which probably explains why I’m equally interested in how people make sense of things, how technology shapes what they do, and why some interfaces make perfect sense while others make you want to throw your laptop out the window.',
   columns: [
