@@ -6,13 +6,13 @@
 export const profile = {
   name: 'Emily Rose Shereen Filsoof',
   shortName: 'Emily Filsoof',
-  role: 'Digital Designer',
-  kicker: 'Digital designer · UX · AI',
+  role: 'Product Designer',
+  kicker: 'Product designer · UX · AI',
   positioning: 'Research, interaction, and the build.',
   location: 'Copenhagen, Denmark',
   availability: 'Open to new opportunities in digital & product design, AI & technology',
   intro:
-    'Digital designer with an MSc in Digital Design and Interactive Technologies from the IT University of Copenhagen and a background in Information Studies. I work across UX, interaction design and web, from research and concept development through to finished design and implementation.',
+    'Product designer with an MSc in Digital Design and Interactive Technologies from the IT University of Copenhagen and a background in Information Studies. I work across UX, interaction design and web, from research and concept development through to finished design and implementation.',
   aboutParagraphs: [
     'I work between design and technology. My projects move from research and framing into interaction, prototyping and implementation, whether the outcome is an interface, a physical artefact or a coded system.',
     'The four projects in this portfolio show different parts of that practice: digital product and UX research, Research through Design and embodied interaction, participatory and conceptual design, and creative coding. Alongside my studies, I worked across three organisations, designing and building websites in Figma, Webflow and WordPress and taking work through to launch.',

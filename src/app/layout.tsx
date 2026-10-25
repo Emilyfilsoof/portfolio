@@ -11,12 +11,12 @@ import './globals.css';
 export const metadata: Metadata = {
   metadataBase: new URL('https://emilyfilsoof.com'),
   title: {
-    default: `${profile.shortName} — ${profile.role}`,
-    template: `%s — ${profile.shortName}`,
+    default: `${profile.shortName} | ${profile.role}`,
+    template: `%s | ${profile.shortName}`,
   },
   description: profile.intro,
   openGraph: {
-    title: `${profile.shortName} — ${profile.role}`,
+    title: `${profile.shortName} | ${profile.role}`,
     description: profile.intro,
     url: 'https://emilyfilsoof.com',
     siteName: profile.shortName,
