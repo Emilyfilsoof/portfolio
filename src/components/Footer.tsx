@@ -10,7 +10,8 @@ export default function Footer() {
         <p className={styles.label}>Get in touch</p>
 
         <a className={styles.email} href={`mailto:${profile.contact.email}`} data-mag>
-          {profile.contact.email}
+          {profile.contact.email.split('@')[0]}
+          <wbr />@{profile.contact.email.split('@')[1]}
         </a>
 
         <div className={styles.foot}>

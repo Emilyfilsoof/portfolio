@@ -7,12 +7,12 @@
 export const stats = [
   { value: 4, suffix: '', label: 'Years in digital design' },
   { value: 5, suffix: '', label: 'Organisations worked with' },
-  { value: 3, suffix: '', label: 'Websites designed & launched' },
+  { value: 4, suffix: '', label: 'Websites designed & launched' },
 ] as const;
 
 export const workedWith = [
   { name: 'Danmarks Radio', note: 'Case', href: '/work/vores-side' },
-  { name: 'DSB', note: 'Vinge og Værksted' },
+  { name: 'DSB', note: 'Client work', href: '/#client-work' },
 ] as const;
 
 /** The three employers from profile.experience, named in a mono row. */
@@ -24,7 +24,7 @@ export const alsoWorkedWith = [
 
 /** Hero positioning line, set as one sentence rather than derived from prose. */
 export const positioning =
-  'PRODUCT DESIGNER WORKING ACROSS UX, INTERACTION & EMERGING TECHNOLOGY';
+  'PRODUCT DESIGNER & DIGITAL DEVELOPMENT CONSULTANT WORKING ACROSS UX, FRONTEND & AI';
 
 /** Top row of the hero. The site has no separate navigation bar. */
 export const heroName = ['Emily Rose', 'Shereen Filsoof'] as const;

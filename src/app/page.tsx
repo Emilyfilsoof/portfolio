@@ -2,6 +2,8 @@ import { Fragment } from 'react';
 import Marquee from '@/components/Marquee';
 import WorkTiles from '@/components/WorkTiles';
 import WorkedWith from '@/components/WorkedWith';
+import ClientWork from '@/components/ClientWork';
+import { clientWork } from '@/data/client-work';
 import Scramble from '@/components/Scramble';
 import { projects } from '@/data/projects';
 import { profile } from '@/data/profile';
@@ -58,17 +60,20 @@ export default function HomePage() {
           </div>
           <p className={styles.scrollCue}>
             <span className={styles.dot} aria-hidden="true" />
-            Scroll · {String(projects.length).padStart(2, '0')} projects
+            Scroll · {String(clientWork.length).padStart(2, '0')} client sites ·{' '}
+            {String(projects.length).padStart(2, '0')} projects
           </p>
         </div>
       </section>
 
       <Marquee />
 
+      <ClientWork />
+
       <section className={`page ${styles.work}`} id="work" data-bg="#f4f2ec" data-ink="#0c0c0c">
         <div className={styles.workHead}>
-          <Scramble className="label label-ink" text="Selected projects" />
-          <p className={styles.workNote}>Click a tile to open the case</p>
+          <Scramble className="label label-ink" text="Research & studio projects" />
+          <p className={styles.workNote}>From my MSc at ITU · Click a tile to open the case</p>
         </div>
         <WorkTiles projects={projects} />
       </section>
@@ -111,9 +116,7 @@ export default function HomePage() {
                   {paragraph}
                 </p>
               ))}
-              {column.statement ? (
-                <p className={styles.aboutStatement}>{column.statement}</p>
-              ) : null}
+              {column.statement ? <p className={styles.aboutStatement}>{column.statement}</p> : null}
             </div>
           ))}
         </div>

@@ -11,14 +11,14 @@ export default function WorkedWith() {
     <section className={styles.wrap} data-bg="#00e5ff" data-ink="#0c0c0c">
       <p className="label label-ink">Worked with</p>
       <div className={styles.grid}>
-        {workedWith.map((org) => {
+        {workedWith.map((org: { name: string; note?: string; href?: string }) => {
           const inner = (
             <>
               <p className={styles.name}>{org.name}</p>
               {org.note ? <p className={styles.note}>{org.note}</p> : null}
             </>
           );
-          return "href" in org ? (
+          return org.href ? (
             <Link key={org.name} href={org.href} className={styles.cell} data-cursor="Case">
               {inner}
             </Link>

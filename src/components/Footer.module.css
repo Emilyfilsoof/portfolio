@@ -25,11 +25,13 @@
   display: inline-block;
   font-weight: 900;
   font-stretch: 112%;
-  font-size: clamp(26px, 7.4vw, 122px);
+  font-size: clamp(26px, 8.2vw, 112px);
   line-height: 0.9;
   letter-spacing: -0.04em;
   text-transform: uppercase;
-  word-break: break-word;
+  /* Break only at the @ (a <wbr> in the markup), never inside a word. */
+  word-break: normal;
+  overflow-wrap: normal;
   transition: color var(--dur) var(--ease), transform 400ms var(--ease-out);
 }
 

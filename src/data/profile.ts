@@ -68,9 +68,9 @@ export const profile = {
   ],
   experience: [
     {
-      period: 'Mar 2026 — Aug 2026',
+      period: 'Mar 2026 to present',
       organisation: 'Duus Partners P/S',
-      title: 'Student Assistant (project-based) — Digital Design & Web',
+      title: 'Digital Development Consultant (promoted from Student Assistant, Mar to Aug 2026)',
       place: 'Copenhagen',
       summary:
         'Project-based digital design, web design and visual communication for a range of clients and projects.',
@@ -81,9 +81,9 @@ export const profile = {
       ],
     },
     {
-      period: 'Feb 2025 — Aug 2026',
+      period: 'Feb 2025 to present',
       organisation: 'Bæredygtigt Kulturliv NU',
-      title: 'Student Assistant — Digital Design & Visual Communication',
+      title: 'Digital Designer (promoted from Student Assistant, Feb 2025 to Aug 2026)',
       place: 'Copenhagen',
       summary:
         "Digital design, visual communication and web across the organisation's projects and platforms.",

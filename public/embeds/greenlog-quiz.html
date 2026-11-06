@@ -1,0 +1,668 @@
+<!doctype html>
+<html lang="da">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>The Green Log: onboarding quiz</title>
+<meta name="robots" content="noindex">
+<base target="_blank">
+<style>html,body{margin:0;padding:0;background:#2F5A34}</style>
+</head>
+<body>
+<!-- The Green Log: startsektion med sp&#xF8;rgeskema. Alt i &#xE9;n blok: HTML, CSS og JS. Ikonerne hentes fra beregnhandling.nu. -->
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@700&family=Open+Sans:wght@400;600;700&display=swap">
+<style>
+/* The Green Log: startsektion. Alle klasser starter med .glq / .gl- s&#xE5; de ikke rammer temaet. */
+
+/* ---------- Gr&#xF8;n sektion (statisk) ---------- */
+.gl-start {
+  background: #2F5A34;
+  font-family: 'Open Sans', system-ui, sans-serif;
+  -webkit-font-smoothing: antialiased;
+}
+.gl-start *, .gl-start *::before, .gl-start *::after { box-sizing: border-box; }
+.gl-start-inner {
+  max-width: 1080px;
+  margin: 0 auto;
+  padding: 64px 32px;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 300px), 1fr));
+  gap: 40px;
+  align-items: start;
+}
+.gl-start-kicker {
+  font-size: 12px; font-weight: 700; letter-spacing: .06em;
+  color: #E3DC4E; margin-bottom: 12px;
+}
+.gl-start-title {
+  font-family: 'Roboto Slab', serif; font-weight: 700;
+  font-size: clamp(28px, 3.6vw, 38px); line-height: 1.15;
+  margin: 0 0 16px; color: #FFFFFF; text-wrap: pretty;
+}
+.gl-start-text {
+  font-size: 15.5px; line-height: 1.65; color: #DCE5D8;
+  margin: 0 0 28px; max-width: 26em;
+}
+
+/* ---------- Hvid boks (sp&#xF8;rgeskemaet) ---------- */
+.glq {
+  position: relative;
+  background: #FFFFFF;
+  box-shadow: 0 4px 14px rgba(0,0,0,.22);
+  overflow: hidden;
+  color: #2C4157;
+  font-family: 'Open Sans', system-ui, sans-serif;
+}
+.glq button { font-family: inherit; }
+.glq-wrap { overflow: hidden; transition: height .4s cubic-bezier(.65,0,.35,1); }
+.glq-track {
+  display: flex; width: 500%; align-items: flex-start;
+  transition: transform .45s cubic-bezier(.65,0,.35,1);
+}
+.glq-slide {
+  width: 20%;
+  padding: 30px 30px 28px;
+  height: 0; overflow: hidden;
+  visibility: hidden;
+  transition: visibility 0s linear .45s;
+}
+.glq-slide.is-active { height: auto; visibility: visible; transition: none; }
+
+.glq-kicker { font-size: 12px; font-weight: 700; letter-spacing: .05em; color: #7E721A; margin-bottom: 10px; }
+.glq-h {
+  font-family: 'Roboto Slab', serif; font-weight: 700;
+  font-size: 23px; line-height: 1.2; margin: 0 0 6px; color: #2C4157;
+}
+.glq-h--start { font-size: 26px; margin-bottom: 12px; text-wrap: pretty; }
+.glq-h--rec { font-size: 25px; margin-bottom: 10px; }
+.glq-sub { font-size: 14px; line-height: 1.55; color: #5A655E; margin: 0 0 20px; }
+.glq-sub--rec { color: #4A564E; margin-bottom: 16px; }
+.glq-count { color: #2C4157; }
+
+/* Svarmuligheder */
+.glq-grid2 { display: grid; grid-template-columns: repeat(2, minmax(0,1fr)); gap: 10px; }
+.glq-list { display: grid; gap: 10px; }
+.glq-chips { display: flex; flex-wrap: wrap; gap: 8px; }
+
+.glq-opt {
+  cursor: pointer; text-align: left;
+  background: #FFFFFF; color: #2C4157;
+  border: 1px solid #C5CCC4; border-radius: 2px;
+  font-weight: 600;
+  transition: background .15s ease;
+}
+.glq-opt.is-on { background: #2F5A34; color: #FFFFFF; border-color: #2F5A34; }
+.glq-opt--radio { display: flex; align-items: center; gap: 12px; padding: 14px 16px; font-size: 15px; }
+.glq-opt--chip { padding: 8px 12px; font-size: 13px; line-height: 1.35; }
+.glq-opt.is-full { opacity: .4; cursor: not-allowed; }
+.glq-opt-label { flex: 1; }
+.glq-mark {
+  flex: none; width: 18px; height: 18px; border-radius: 50%;
+  border: 1.5px solid #AEB8AF; background: transparent;
+}
+.glq-opt.is-on .glq-mark { border-color: #E3DC4E; background: #E3DC4E; }
+
+/* Anbefaling */
+.glq-recs { display: grid; gap: 14px; margin: 0 0 14px; }
+.glq-rec { display: flex; align-items: flex-start; gap: 16px; min-width: 0; }
+.glq-tile {
+  flex: none; width: 112px; aspect-ratio: 224 / 256; position: relative;
+  background: #FFFFFF; border: 1px solid #D6D9D6; border-radius: 4px;
+  box-shadow: 2px 3px 6px rgba(0,0,0,.22);
+  display: flex; flex-direction: column; align-items: center; justify-content: center;
+  gap: 10px; padding: 14px 8px;
+}
+.glq-tile-dot {
+  position: absolute; top: 8px; right: 8px;
+  width: 13px; height: 13px; border-radius: 50%; background: #E1E8E0;
+}
+.glq-tile-icon { width: 46%; max-width: 64px; height: auto; display: block; }
+.glq-tile-title {
+  font-size: 13.5px; line-height: 1.3; text-align: center;
+  color: #8F3639; hyphens: manual;
+}
+.glq-rec-text {
+  flex: 1 1 auto; min-width: 0; padding-top: 4px;
+  font-size: 13.5px; line-height: 1.55; color: #2F4859;
+}
+
+.glq-more {
+  position: relative; margin: 0 0 22px; overflow: hidden;
+  border: 1px dashed #C5CCC4; border-radius: 2px;
+}
+.glq-more-blur {
+  display: grid; gap: 8px; padding: 12px 14px;
+  filter: blur(3.5px); opacity: .55; user-select: none;
+  font-size: 14px; font-weight: 700; color: #2C4157;
+}
+.glq-more-label {
+  position: absolute; inset: 0;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 14px; font-weight: 700; color: #2C4157;
+}
+.glq-pill {
+  display: inline-block; white-space: nowrap; line-height: 1.35;
+  background: #FFFFFF; padding: 5px 12px;
+  border-radius: 999px; border: 1px solid #C5CCC4;
+}
+
+.glq-cta, .glq-cta:link, .glq-cta:visited {
+  display: inline-flex;
+  background: #E3DC4E; color: #2C3A1E;
+  padding: 13px 26px; border-radius: 999px;
+  font-size: 14.5px; font-weight: 700; white-space: nowrap;
+  text-decoration: none;
+}
+.glq-cta:hover, .glq-cta:focus { background: #D6CF3F; color: #2C3A1E; text-decoration: none; }
+.glq-trial { font-size: 12.5px; color: #6B756E; margin-top: 10px; }
+
+/* Bundlinje */
+.glq-bar {
+  position: relative; display: flex; align-items: center; gap: 14px;
+  padding: 0 30px 26px; min-height: 67px;
+}
+.glq-bar [hidden] { display: none !important; }
+.glq-back {
+  cursor: pointer; background: none;
+  border: 1.5px solid #9AA59C; color: #3E4A44;
+  padding: 10px 20px; border-radius: 999px;
+  font-size: 13.5px; font-weight: 600;
+}
+.glq-next {
+  cursor: pointer; border: none;
+  background: #E3DC4E; color: #2C3A1E;
+  padding: 11px 24px; border-radius: 999px;
+  font-size: 13.5px; font-weight: 700; white-space: nowrap;
+}
+.glq-next:disabled { background: #E5E9E2; color: #8A948C; cursor: not-allowed; }
+.glq-restart {
+  cursor: pointer; background: none; border: none; padding: 0;
+  color: #5A655E; font-size: 13px; font-weight: 600;
+  text-decoration: underline; white-space: nowrap;
+}
+.glq-prog {
+  margin-left: auto; flex: 0 1 140px; min-width: 80px; height: 10px;
+  border-radius: 999px; background: #DCE0DA; overflow: hidden;
+}
+.glq-prog-fill {
+  height: 100%; width: 0; border-radius: 999px; background: #2F5A34;
+  transition: width .45s cubic-bezier(.65,0,.35,1);
+}
+
+
+.glq-tile-title { overflow-wrap: anywhere; max-width: 100%; }
+.glq-rec-title { display: none; }
+
+/* ---------- Mobil: &#xE9;t fast design i 375px, som skaleres til telefonens bredde ---------- */
+@media (max-width: 599px) {
+  .gl-start { overflow: hidden; }
+  .gl-start-inner {
+    width: 375px; max-width: none; margin: 0;
+    padding: 48px 20px 52px;
+    grid-template-columns: 1fr; gap: 28px;
+    transform-origin: 0 0;
+  }
+  .gl-start-kicker { font-size: 12px; margin-bottom: 12px; }
+  .gl-start-title { font-size: 28px; margin-bottom: 14px; }
+  .gl-start-text { font-size: 15.5px; margin: 0; max-width: none; }
+
+  .glq-slide { padding: 24px 20px 22px; }
+  .glq-h { font-size: 22px; }
+  .glq-h--start { font-size: 25px; }
+  .glq-h--rec { font-size: 24px; }
+  .glq-sub { font-size: 14px; }
+  .glq-opt--radio { font-size: 15px; }
+  .glq-opt--chip { font-size: 13px; }
+
+  .glq-bar { padding: 0 20px 22px; flex-wrap: wrap; row-gap: 16px; }
+  .glq-prog { order: -1; flex: 1 1 100%; margin-left: 0; height: 6px; }
+
+  /* Anbefalinger p&#xE5; mobil: lille ikonkort + titel p&#xE5; &#xE9;n linje, teksten i fuld bredde under */
+  .glq-recs { gap: 0; margin-bottom: 18px; }
+  .glq-rec {
+    display: grid; grid-template-columns: 56px 1fr;
+    column-gap: 14px; row-gap: 10px; align-items: center;
+    padding: 16px 0; border-bottom: 1px solid #E3E8E0;
+  }
+  .glq-rec:first-child { padding-top: 4px; }
+  .glq-tile { width: 56px; aspect-ratio: 1; padding: 0; gap: 0; border-radius: 4px; box-shadow: 1px 2px 4px rgba(0,0,0,.18); }
+  .glq-tile-title { display: none; }
+  .glq-tile-icon { width: 28px; max-width: 28px; }
+  .glq-tile-dot { width: 8px; height: 8px; top: 5px; right: 5px; }
+  .glq-rec-title {
+    display: block;
+    font-family: 'Roboto Slab', serif; font-weight: 700;
+    font-size: 17px; line-height: 1.25; color: #2C4157;
+  }
+  .glq-rec-text { grid-column: 1 / -1; padding-top: 0; font-size: 14px; line-height: 1.6; }
+}
+</style>
+
+<section class="gl-start" id="find-startpunkt">
+  <div class="gl-start-inner">
+    <div>
+      <div class="gl-start-kicker">VI GUIDER DIG IGENNEM</div>
+      <h2 class="gl-start-title">Fra god vilje til konkrete handlinger</h2>
+      <p class="gl-start-text">Brug &#xE9;t minut nu, og I har en plan for de n&#xE6;ste tre m&#xE5;neder. Se, hvor hurtigt I kan rykke.</p>
+    </div>
+    <div data-greenlog-quiz
+         data-signup-url="https://beregnhandling.nu/da/signup_thegreenlog"
+         data-trial-days="30"
+         data-total="108"></div>
+  </div>
+</section>
+
+<script>
+/**
+ * The Green Log: startsektion (sp\u00F8rgeskema).
+ * Finder alle elementer med [data-greenlog-quiz] og bygger sp\u00F8rgeskemaet i dem.
+ *
+ * Attributter p\u00E5 mount-elementet (alle valgfri):
+ *   data-signup-url   Link til tilmeldingen        (standard: /da/signup_thegreenlog)
+ *   data-icon-path    Mappe med ikoner (valgfri, ikonerne ligger ellers i filen)
+ *   data-trial-days   Antal gratis dage            (standard: 30)
+ *   data-total        Antal handlinger i loggen    (standard: 108)
+ */
+(function () {
+  'use strict';
+
+  // ---------- Indhold ----------
+  var SIZES = [
+    { label: '1-5', value: '1-5' },
+    { label: '5-25', value: '5-25' },
+    { label: '25-100', value: '25-100' },
+    { label: 'Flere end 100', value: '100+' }
+  ];
+
+  var STAGES = [
+    { label: 'Vi er lige startet', key: 'fro', title: 'I starter i Fr\u00F8: kom i gang.' },
+    { label: 'Vi er allerede i gang', key: 'spire', title: 'I starter i Spire: s\u00E6t retning.' },
+    { label: 'Vi arbejder allerede systematisk', key: 'plante', title: 'I starter i Plante: s\u00E6t i drift.' }
+  ];
+
+  // [visningsnavn, v\u00E6rdi i linket]
+  var THEMES = [
+    ['Affaldssortering', 'affaldssortering'],
+    ['Madspild', 'madspild'],
+    ['Energiforbrug', 'energi'],
+    ['Genbrug og upcycling', 'genbrug'],
+    ['Natur og biodiversitet', 'natur'],
+    ['Bedre ressourceanvendelse', 'ressourcer'],
+    ['Klimabevidsthed', 'klimabevidsthed'],
+    ['CO2-reduktioner', 'co2'],
+    ['Cirkularitet', 'cirkularitet'],
+    ['Strategi for b\u00E6redygtighed', 'strategi'],
+    ['Klima- og milj\u00F8politik', 'klima-og-miljopolitik'],
+    ['Klimahandlingsplaner', 'handlingsplaner'],
+    ['Klimacertificering', 'certificeringer'],
+    ['ESG-rapportering', 'esg']
+  ];
+
+  // \u00C9n anbefaling pr. svar p\u00E5 "Hvor langt er I". \u00AD = bl\u00F8d bindestreg i kortets titel.
+  var RECS = [
+    [
+      { title: 'Affalds\u00ADfraktioner', icon: 'icon-affald.png',
+        text: 'Folketinget besluttede i 2020 at affaldssortering skulle v\u00E6re landsd\u00E6kkende indenfor 10 forskellige fraktioner. Efter bedste evne b\u00F8r jeres organisation indf\u00F8re alle ti sorterings-fraktioner internt.' },
+      { title: 'B\u00E6redygtig dagsorden', icon: 'icon-dagsorden.png',
+        text: 'Det er vigtigt at lade den b\u00E6redygtige dagsorden flyde ud i alle hj\u00F8rner af organisationen, s\u00E5 det bliver en naturlig del af jeres organisation og m\u00E5den I t\u00E6nker p\u00E5. Sikre derfor at b\u00E6redygtighed altid er et punkt p\u00E5 faste m\u00F8der, s\u00E5som personalem\u00F8der.' },
+      { title: 'Genbrug', icon: 'icon-genbrug.png',
+        text: 'Genbrug hvad genbruges kan, og s\u00F8rg for at cirkulere alle de materialer eller produkter som genbruges.' }
+    ],
+    [
+      { title: 'Bio\u00ADdiversitets-politik', icon: 'icon-bio.png',
+        text: 'Udarbejd en biodiversitets-politik. Denne anvendes internt til at s\u00E6tte retning og vise ambitionsniveauet for organisationens arbejde med natur og biodiversitet.' },
+      { title: 'Lav CO2-baseline', icon: 'icon-co2.png',
+        text: 'P\u00E5begynd organisations f\u00F8rste CO2-baseline, med f.eks. f\u00F8lgende data: el-, vand- og varmeforbrug. Tilf\u00F8j gerne anden data, som I finder relevant at inddrage eller som er let at finde. V\u00E6lg et CO2-v\u00E6rkt\u00F8j og begynd at indskrive den data, som I \u00F8nsker at basere jeres f\u00F8rste CO2-regnskab p\u00E5.' },
+      { title: 'Udbred b\u00E6re\u00ADdygtigheds\u00ADpolitik', icon: 'icon-udbred.png',
+        text: 'Alle medarbejdere/ l\u00F8st ansatte skal v\u00E6re bekendte med organisationens politikker indenfor klima, milj\u00F8, biodiversitet og det sociale element.' }
+    ],
+    [
+      { title: 'SBTI', icon: 'icon-sbti.png',
+        text: 'Bliv en del af Science Based Targets Initiative. Dette er en non-profit organisation som arbejder for at forbinde virksomheders reduktionsm\u00E5l med videnskaben og klimaeksperter, s\u00E5 virksomhedens klimam\u00E5l stemmer overens med videnskaben.' },
+      { title: 'Transport\u00ADvaner', icon: 'icon-transport.png',
+        text: 'Skab indsigt i publikums eller g\u00E6sters transportvaner. Lav eksempelvis en sp\u00F8rgeunders\u00F8gelse der unders\u00F8ger hvordan publikum eller g\u00E6ster har transporteret sig til eventet.' },
+      { title: 'ISO 14001 certificering', icon: 'icon-iso.png',
+        text: 'Unders\u00F8g muligheden for for at f\u00E5 en ISO 14001 certificering indenfor milj\u00F8ledelse. Den vil v\u00E6re med til at sikre, s\u00E6rligt milj\u00F8arbejdet og har et stort fokus p\u00E5 materialer og kemi p\u00E5 indk\u00F8bsomr\u00E5det.' }
+    ]
+  ];
+
+  var MAX_THEMES = 3;
+  var LAST = 4;
+
+  // Ikonerne hentes fra beregnhandling.nu, de samme som handlingerne har i loggen.
+  // Skiftes et ikon i Drupal, f\u00E5r filen et nyt navn, og s\u00E5 skal stien rettes her.
+  var ICON_BASE = 'https://beregnhandling.nu/sites/default/files/';
+  var ICONS = {
+    'icon-affald.png': ICON_BASE + '2025-03/trash.png',
+    'icon-dagsorden.png': ICON_BASE + '2025-02/calendar_0.png',
+    'icon-genbrug.png': ICON_BASE + '2025-02/reuse_0.png',
+    'icon-bio.png': ICON_BASE + '2025-02/policy_0.png',
+    'icon-co2.png': ICON_BASE + '2025-02/co2_0.png',
+    'icon-udbred.png': ICON_BASE + '2025-02/policy_0.png',
+    'icon-sbti.png': ICON_BASE + '2025-02/map.png',
+    'icon-transport.png': ICON_BASE + '2025-02/car_0.png',
+    'icon-iso.png': ICON_BASE + '2025-03/award.png'
+  };
+
+  // ---------- Hj\u00E6lpere ----------
+  function el(tag, cls, text) {
+    var n = document.createElement(tag);
+    if (cls) n.className = cls;
+    if (text != null) n.textContent = text;
+    return n;
+  }
+
+  function optionButton(label, withMark) {
+    var b = el('button', 'glq-opt' + (withMark ? ' glq-opt--radio' : ' glq-opt--chip'));
+    b.type = 'button';
+    if (withMark) b.appendChild(el('span', 'glq-mark'));
+    b.appendChild(el('span', 'glq-opt-label', label));
+    return b;
+  }
+
+  // ---------- Komponent ----------
+  function Quiz(root) {
+    this.root = root;
+    this.signupUrl = root.getAttribute('data-signup-url') || '/da/signup_thegreenlog';
+    this.iconPath = root.getAttribute('data-icon-path') || '';
+    this.trialDays = root.getAttribute('data-trial-days') || '30';
+    this.total = parseInt(root.getAttribute('data-total') || '108', 10);
+    this.state = { i: 0, org: null, stage: null, themes: [] };
+    this.build();
+    this.update();
+  }
+
+  Quiz.prototype.build = function () {
+    var self = this;
+    var root = this.root;
+    root.classList.add('glq');
+    root.innerHTML = '';
+
+    this.wrap = el('div', 'glq-wrap');
+    this.track = el('div', 'glq-track');
+    this.wrap.appendChild(this.track);
+    root.appendChild(this.wrap);
+    this.slides = [];
+
+    // 0 \u00B7 Start
+    var s0 = this.slide();
+    s0.appendChild(el('div', 'glq-kicker', 'KOM I GANG'));
+    s0.appendChild(el('h3', 'glq-h glq-h--start', 'F\u00E5 en skr\u00E6ddersyet plan til de f\u00F8rste skridt mod en mere b\u00E6redygtig praksis'));
+    s0.appendChild(el('p', 'glq-sub', 'Tre klik, et minut, og I ved pr\u00E6cis, hvor I skal tage fat.'));
+
+    // 1 \u00B7 Antal ansatte
+    var s1 = this.slide();
+    s1.appendChild(el('h3', 'glq-h', 'Hvor mange er I i organisationen?'));
+    s1.appendChild(el('p', 'glq-sub', 'T\u00E6l alle faste medarbejdere med.'));
+    var g1 = el('div', 'glq-grid2');
+    this.sizeBtns = SIZES.map(function (x, k) {
+      var b = optionButton(x.label, true);
+      b.addEventListener('click', function () { self.set({ org: k }); });
+      g1.appendChild(b);
+      return b;
+    });
+    s1.appendChild(g1);
+
+    // 2 \u00B7 Fase
+    var s2 = this.slide();
+    s2.appendChild(el('h3', 'glq-h', 'Hvor langt er I med den gr\u00F8nne omstilling?'));
+    s2.appendChild(el('p', 'glq-sub', 'V\u00E6lg det, der passer bedst. Der er ikke noget forkert svar.'));
+    var g2 = el('div', 'glq-list');
+    this.stageBtns = STAGES.map(function (x, k) {
+      var b = optionButton(x.label, true);
+      b.addEventListener('click', function () { self.set({ stage: k }); });
+      g2.appendChild(b);
+      return b;
+    });
+    s2.appendChild(g2);
+
+    // 3 \u00B7 Temaer
+    var s3 = this.slide();
+    s3.appendChild(el('h3', 'glq-h', 'Hvilke gr\u00F8nne temaer optager jer mest lige nu?'));
+    var sub3 = el('p', 'glq-sub', 'V\u00E6lg de tre, der fylder mest. I kan altid arbejde med de andre bagefter. ');
+    this.themeCount = el('strong', 'glq-count');
+    sub3.appendChild(this.themeCount);
+    s3.appendChild(sub3);
+    var g3 = el('div', 'glq-chips');
+    this.themeBtns = THEMES.map(function (x) {
+      var b = optionButton(x[0], false);
+      b.addEventListener('click', function () { self.toggleTheme(x[0]); });
+      g3.appendChild(b);
+      return b;
+    });
+    s3.appendChild(g3);
+
+    // 4 \u00B7 Anbefaling
+    var s4 = this.slide();
+    s4.appendChild(el('div', 'glq-kicker', 'JERES ANBEFALING'));
+    this.recTitle = el('h3', 'glq-h glq-h--rec');
+    s4.appendChild(this.recTitle);
+    s4.appendChild(el('p', 'glq-sub glq-sub--rec', 'Her er de tre handlinger, vi anbefaler, at I starter med.'));
+    this.recList = el('div', 'glq-recs');
+    s4.appendChild(this.recList);
+
+    var more = el('div', 'glq-more');
+    var blur = el('div', 'glq-more-blur');
+    blur.setAttribute('aria-hidden', 'true');
+    blur.appendChild(el('div', null, 'Code of conduct'));
+    blur.appendChild(el('div', null, 'Gr\u00F8nne m\u00F8der'));
+    more.appendChild(blur);
+    var pillWrap = el('div', 'glq-more-label');
+    pillWrap.appendChild(el('span', 'glq-pill', '+ ' + (this.total - 3) + ' handlinger mere'));
+    more.appendChild(pillWrap);
+    s4.appendChild(more);
+
+    this.cta = el('a', 'glq-cta', 'Opret gratis pr\u00F8veperiode');
+    s4.appendChild(this.cta);
+    s4.appendChild(el('div', 'glq-trial', this.trialDays + ' dage gratis, ingen binding eller betalingsoplysninger.'));
+
+    // Bundlinje
+    var bar = el('div', 'glq-bar');
+    this.backBtn = el('button', 'glq-back', 'Tilbage');
+    this.backBtn.type = 'button';
+    this.backBtn.addEventListener('click', function () { self.go(Math.max(0, self.state.i - 1)); });
+    this.nextBtn = el('button', 'glq-next');
+    this.nextBtn.type = 'button';
+    this.nextBtn.addEventListener('click', function () { if (self.answered()) self.go(self.state.i + 1); });
+    this.restartBtn = el('button', 'glq-restart', 'Ret mine svar');
+    this.restartBtn.type = 'button';
+    this.restartBtn.addEventListener('click', function () { self.go(1); });
+    this.prog = el('div', 'glq-prog');
+    this.progFill = el('div', 'glq-prog-fill');
+    this.prog.appendChild(this.progFill);
+    bar.appendChild(this.backBtn);
+    bar.appendChild(this.nextBtn);
+    bar.appendChild(this.restartBtn);
+    bar.appendChild(this.prog);
+    root.appendChild(bar);
+
+    if (window.ResizeObserver) {
+      new ResizeObserver(function () { self.syncHeight(); }).observe(this.track);
+    }
+    window.addEventListener('resize', function () { self.syncHeight(); });
+  };
+
+  Quiz.prototype.slide = function () {
+    var s = el('div', 'glq-slide');
+    this.track.appendChild(s);
+    this.slides.push(s);
+    return s;
+  };
+
+  Quiz.prototype.set = function (patch) {
+    for (var k in patch) this.state[k] = patch[k];
+    this.update();
+  };
+
+  Quiz.prototype.go = function (i) { this.set({ i: i }); };
+
+  Quiz.prototype.toggleTheme = function (name) {
+    var t = this.state.themes.slice();
+    var at = t.indexOf(name);
+    if (at >= 0) t.splice(at, 1);
+    else if (t.length < MAX_THEMES) t.push(name);
+    this.set({ themes: t });
+  };
+
+  Quiz.prototype.answered = function () {
+    var s = this.state;
+    return [true, s.org !== null, s.stage !== null, s.themes.length > 0, true][s.i];
+  };
+
+  Quiz.prototype.url = function () {
+    var s = this.state;
+    var stage = STAGES[s.stage == null ? 0 : s.stage];
+    var themes = s.themes.map(function (n) {
+      for (var k = 0; k < THEMES.length; k++) if (THEMES[k][0] === n) return THEMES[k][1];
+      return '';
+    });
+    var q = [
+      'pakke=' + ((s.stage == null ? 0 : s.stage) + 1),
+      'fase=' + encodeURIComponent(stage.key),
+      'omrader=' + encodeURIComponent(themes.join(',')),
+      'ansatte=' + encodeURIComponent(s.org !== null ? SIZES[s.org].value : '')
+    ].join('&');
+    return this.signupUrl + (this.signupUrl.indexOf('?') >= 0 ? '&' : '?') + q;
+  };
+
+  Quiz.prototype.renderRecs = function () {
+    var self = this;
+    var list = RECS[this.state.stage == null ? 0 : this.state.stage];
+    this.recList.innerHTML = '';
+    list.forEach(function (r) {
+      var row = el('div', 'glq-rec');
+      var tile = el('div', 'glq-tile');
+      tile.appendChild(el('span', 'glq-tile-dot'));
+      var img = el('img', 'glq-tile-icon');
+      img.src = self.iconPath ? self.iconPath + r.icon : ICONS[r.icon];
+      img.alt = '';
+      tile.appendChild(img);
+      var t = el('div', 'glq-tile-title', r.title);
+      t.setAttribute('lang', 'da');
+      tile.appendChild(t);
+      row.appendChild(tile);
+      var rt = el('div', 'glq-rec-title', r.title.replace(/\u00AD/g, ''));
+      rt.setAttribute('lang', 'da');
+      row.appendChild(rt);
+      row.appendChild(el('div', 'glq-rec-text', r.text));
+      self.recList.appendChild(row);
+    });
+  };
+
+  Quiz.prototype.update = function () {
+    var s = this.state;
+    var self = this;
+
+    this.track.style.transform = 'translateX(' + (-s.i * 20) + '%)';
+    this.slides.forEach(function (sl, k) {
+      var on = k === s.i;
+      sl.classList.toggle('is-active', on);
+      sl.setAttribute('aria-hidden', on ? 'false' : 'true');
+    });
+
+    this.sizeBtns.forEach(function (b, k) { b.classList.toggle('is-on', s.org === k); });
+    this.stageBtns.forEach(function (b, k) { b.classList.toggle('is-on', s.stage === k); });
+    var full = s.themes.length >= MAX_THEMES;
+    this.themeBtns.forEach(function (b, k) {
+      var on = s.themes.indexOf(THEMES[k][0]) >= 0;
+      b.classList.toggle('is-on', on);
+      b.classList.toggle('is-full', full && !on);
+    });
+    this.themeCount.textContent = s.themes.length + ' af ' + MAX_THEMES + ' valgt';
+
+    if (s.i === LAST) {
+      this.recTitle.textContent = STAGES[s.stage == null ? 0 : s.stage].title;
+      this.renderRecs();
+      this.cta.href = this.url();
+    }
+
+    var ok = this.answered();
+    this.backBtn.hidden = !(s.i > 0 && s.i < LAST);
+    this.nextBtn.hidden = s.i >= LAST;
+    this.nextBtn.disabled = !ok;
+    this.nextBtn.textContent = s.i === 0 ? 'Start' : (s.i === 3 ? 'Se jeres anbefaling' : 'Videre');
+    this.restartBtn.hidden = s.i !== LAST;
+    this.prog.hidden = !(s.i > 0 && s.i < LAST);
+    this.progFill.style.width = ['0%', '33%', '67%', '100%', '100%'][s.i];
+
+    requestAnimationFrame(function () { self.syncHeight(); });
+  };
+
+  Quiz.prototype.syncHeight = function () {
+    var h = this.track.offsetHeight;
+    this.wrap.style.height = h > 0 ? h + 'px' : 'auto';
+  };
+
+
+  // ---------- Fast mobil-layout ----------
+  // Under 600px er sektionen tegnet i 375px og skaleres op eller ned, s\u00E5 den ser ens ud p\u00E5 alle telefoner.
+  var MOBILE_W = 375;
+  var mq = window.matchMedia ? window.matchMedia('(max-width: 599px)') : null;
+  function fit(sec) {
+    var inner = sec.querySelector('.gl-start-inner');
+    if (!inner) return;
+    if (mq && mq.matches) {
+      var s = sec.clientWidth / MOBILE_W;
+      inner.style.transform = 'scale(' + s + ')';
+      sec.style.height = Math.ceil(inner.offsetHeight * s) + 'px';
+    } else {
+      inner.style.transform = '';
+      sec.style.height = '';
+    }
+  }
+  function fitAll() {
+    Array.prototype.forEach.call(document.querySelectorAll('.gl-start'), fit);
+  }
+  function watchFit(context) {
+    var secs = (context || document).querySelectorAll ? (context || document).querySelectorAll('.gl-start') : [];
+    Array.prototype.forEach.call(secs, function (sec) {
+      if (sec.getAttribute('data-gl-fit')) return;
+      sec.setAttribute('data-gl-fit', '1');
+      fit(sec);
+      var inner = sec.querySelector('.gl-start-inner');
+      if (window.ResizeObserver && inner) {
+        new ResizeObserver(function () { fit(sec); }).observe(inner);
+      }
+    });
+  }
+  window.addEventListener('resize', fitAll);
+  if (mq) {
+    if (mq.addEventListener) mq.addEventListener('change', fitAll);
+    else if (mq.addListener) mq.addListener(fitAll);
+  }
+
+  // ---------- Start ----------
+  function init(context) {
+    var nodes = (context || document).querySelectorAll('[data-greenlog-quiz]');
+    Array.prototype.forEach.call(nodes, function (n) {
+      if (n.getAttribute('data-glq-ready')) return;
+      n.setAttribute('data-glq-ready', '1');
+      new Quiz(n);
+    });
+    watchFit(context);
+  }
+
+  init(document);
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', function () { init(document); });
+  }
+  if (window.Drupal && window.Drupal.behaviors) {
+    window.Drupal.behaviors.greenlogQuiz = { attach: function (context) { init(context); } };
+  }
+})();
+</script>
+
+<script>
+/* Portfolio only: report the page height so the parent iframe can fit it. */
+(function () {
+  function post() {
+    var h = document.body.offsetHeight;
+    if (window.parent !== window) window.parent.postMessage({ type: 'embed-height', id: 'greenlog-quiz', height: h }, '*');
+  }
+  if (window.ResizeObserver) new ResizeObserver(post).observe(document.body);
+  window.addEventListener('load', post);
+  post();
+})();
+</script>
+</body>
+</html>
