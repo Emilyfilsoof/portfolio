@@ -1,7 +1,7 @@
 /**
- * Client work: live sites designed and built for clients, kept apart from the
- * research and studio projects in ./projects. Each entry is shown on the
- * homepage as screenshots of the shipped site plus the features I built.
+ * Client work: live sites, kept apart from the research and studio projects in
+ * ./projects. The homepage shows one card per site (first shot on a coloured
+ * ground); /client/[id] holds the details, the other shots and any embed.
  *
  * To add a site: put screenshots in /public/images/client/ and add an entry.
  */
@@ -20,6 +20,11 @@ export type ClientShot = {
 export type ClientProject = {
   id: string;
   index: string;
+  year: string;
+  /** One short line under the card: what I did. */
+  roles: string;
+  /** Background behind the screenshots, picked from each site's palette. */
+  ground: string;
   client: string;
   /** Context after the client name, e.g. 'via Duus Partners'. */
   via?: string;
@@ -39,6 +44,9 @@ export const clientWork: ClientProject[] = [
   {
     id: 'vinge',
     index: 'C/01',
+    year: '2026',
+    roles: 'Web design, UX, WordPress',
+    ground: '#e6e1d7',
     client: 'DSB',
     via: 'via Duus Partners',
     title: 'Vinge Togværksted',
@@ -82,13 +90,16 @@ export const clientWork: ClientProject[] = [
         caption: 'Environmental impact assessment, one card per theme',
         url: 'vingetogvaerksted.dk/#miljoe',
         width: 930,
-        height: 700,
+        height: 668,
       },
     ],
   },
   {
     id: 'green-log',
     index: 'C/02',
+    year: '2026',
+    roles: 'Product design, onboarding, front-end',
+    ground: '#d7e0cf',
     client: 'Beregn Handling',
     via: 'via Duus Partners',
     title: 'The Green Log',
@@ -155,6 +166,9 @@ export const clientWork: ClientProject[] = [
   {
     id: 'bkn',
     index: 'C/03',
+    year: '2025-26',
+    roles: 'Information architecture, Webflow, CMS',
+    ground: '#efdcc8',
     client: 'Bæredygtigt Kulturliv NU',
     title: 'Bæredygtigt Kulturliv NU',
     href: 'https://www.baeredygtigtkulturliv.nu',
@@ -209,6 +223,9 @@ export const clientWork: ClientProject[] = [
   {
     id: 'hairholic',
     index: 'C/04',
+    year: '2026',
+    roles: 'Design and development, Shopify',
+    ground: '#e9e1d8',
     client: 'Hairholic',
     via: 'Side project',
     title: 'Hairholic',
