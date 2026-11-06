@@ -56,7 +56,7 @@ export default function ClientWork() {
                 <span className={styles.index}>{project.index}</span>
                 <span className={styles.client}>
                   {project.client}
-                  {project.via ? <span className={styles.via}> · via {project.via}</span> : null}
+                  {project.via ? <span className={styles.via}> · {project.via}</span> : null}
                 </span>
                 <span className={styles.live}>
                   <span className={styles.liveDot} aria-hidden="true" />

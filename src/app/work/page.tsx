@@ -7,7 +7,7 @@ import styles from './page.module.css';
 export const metadata: Metadata = {
   title: 'Work',
   description:
-    'Live client sites for DSB, The Green Log and Hairholic, and four projects: a public-service product concept for DR, an MSc thesis on wearable interaction, a participatory design study of diabetes alarms, and a sensor-driven generative system.',
+    'Live sites for DSB, The Green Log, Bæredygtigt Kulturliv NU and Hairholic, and four projects: a public-service product concept for DR, an MSc thesis on wearable interaction, a participatory design study of diabetes alarms, and a sensor-driven generative system.',
 };
 
 export default function WorkPage() {

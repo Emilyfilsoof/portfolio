@@ -60,7 +60,7 @@ export default function HomePage() {
           </div>
           <p className={styles.scrollCue}>
             <span className={styles.dot} aria-hidden="true" />
-            Scroll · {String(clientWork.length).padStart(2, '0')} client sites ·{' '}
+            Scroll · {String(clientWork.length).padStart(2, '0')} live sites ·{' '}
             {String(projects.length).padStart(2, '0')} projects
           </p>
         </div>

@@ -21,7 +21,7 @@ export type ClientProject = {
   id: string;
   index: string;
   client: string;
-  /** Who the work was done through, if anyone. */
+  /** Context after the client name, e.g. 'via Duus Partners'. */
   via?: string;
   title: string;
   href: string;
@@ -40,7 +40,7 @@ export const clientWork: ClientProject[] = [
     id: 'vinge',
     index: 'C/01',
     client: 'DSB',
-    via: 'Duus Partners',
+    via: 'via Duus Partners',
     title: 'Vinge Togværksted',
     href: 'https://vingetogvaerksted.dk',
     linkLabel: 'vingetogvaerksted.dk',
@@ -90,7 +90,7 @@ export const clientWork: ClientProject[] = [
     id: 'green-log',
     index: 'C/02',
     client: 'Beregn Handling',
-    via: 'Duus Partners',
+    via: 'via Duus Partners',
     title: 'The Green Log',
     href: 'https://beregnhandling.nu/da/thegreenlog',
     linkLabel: 'beregnhandling.nu',
@@ -153,9 +153,64 @@ export const clientWork: ClientProject[] = [
     },
   },
   {
-    id: 'hairholic',
+    id: 'bkn',
     index: 'C/03',
+    client: 'Bæredygtigt Kulturliv NU',
+    title: 'Bæredygtigt Kulturliv NU',
+    href: 'https://www.baeredygtigtkulturliv.nu',
+    linkLabel: 'baeredygtigtkulturliv.nu',
+    summary:
+      'The website of an organisation that helps the Danish arts and culture sector with the green transition, with tools, events, projects and news from the international Theatre Green Book network.',
+    meta: [
+      { term: 'Role', detail: 'Information architecture, web design, CMS, ongoing maintenance' },
+      { term: 'Built in', detail: 'Webflow' },
+    ],
+    built: [
+      {
+        term: 'New structure',
+        detail: 'Redesigned the site and its CMS around a new information architecture.',
+      },
+      {
+        term: 'TGB news',
+        detail:
+          'A CMS collection and landing page for the Theatre Green Book newsletters, sortable by date and styled to match the rest of the site.',
+      },
+      {
+        term: 'Running the site',
+        detail: 'Publish and maintain content in the CMS as part of my role as digital designer.',
+      },
+    ],
+    shots: [
+      {
+        src: '/images/client/bkn-hero.jpg',
+        alt: 'Front page of baeredygtigtkulturliv.nu: the headline Den indre bæredygtighed og den ydre i balance next to a round photo of people gathered in a courtyard.',
+        url: 'baeredygtigtkulturliv.nu',
+        width: 1068,
+        height: 745,
+      },
+      {
+        src: '/images/client/bkn-tgb-news.jpg',
+        alt: 'The TGB nyheder page: a sort menu and a grid of newsletter cards with number, title, teaser and date on a dark green ground.',
+        caption: 'TGB news: a CMS collection with sorting',
+        url: 'baeredygtigtkulturliv.nu/tgb-nyheder',
+        width: 1068,
+        height: 737,
+      },
+      {
+        src: '/images/client/bkn-latest-news.jpg',
+        alt: 'The latest news section on the front page, with a large Theatre Green Book card and two smaller news cards.',
+        caption: 'Latest news on the front page, fed by the CMS',
+        url: 'baeredygtigtkulturliv.nu',
+        width: 1068,
+        height: 720,
+      },
+    ],
+  },
+  {
+    id: 'hairholic',
+    index: 'C/04',
     client: 'Hairholic',
+    via: 'Side project',
     title: 'Hairholic',
     href: 'https://hairholic.co',
     linkLabel: 'hairholic.co',
