@@ -254,7 +254,15 @@ export const clientWork: ClientProject[] = [
     ],
     shots: [
       {
+        src: '/images/client/hairholic-front.jpg',
+        alt: 'Front page of hairholic.co: the Hairholic logo and menu above a photo of hair bundles and tags with the headline Make your hair dreams come true.',
+        url: 'hairholic.co',
+        width: 1070,
+        height: 668,
+      },
+      {
         src: '/images/client/hairholic-shop-the-look.jpg',
+        caption: 'Shop the look: client videos with the exact product and price',
         alt: 'The See it. Love it. Shop it. section: a row of client videos, each with a product chip showing name and price.',
         url: 'hairholic.co',
         width: 1068,
