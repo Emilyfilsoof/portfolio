@@ -12,7 +12,7 @@ export const stats = [
 
 export const workedWith = [
   { name: 'Danmarks Radio', note: 'Case', href: '/work/vores-side' },
-  { name: 'DSB', note: 'Client work', href: '/#client-work' },
+  { name: 'DSB', note: 'Vinge Togværksted', href: '/client/vinge' },
 ] as const;
 
 /** The three employers from profile.experience, named in a mono row. */
