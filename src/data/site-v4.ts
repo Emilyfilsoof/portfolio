@@ -41,7 +41,7 @@ export const manifest = {
 } as const;
 
 export const marqueeText =
-  'UX design — user research — research through design — creative coding — participatory design — wearables — front-end — ';
+  'UX design · user research · research through design · creative coding · participatory design · wearables · front-end · ';
 
 export const introWords = [
   'UX design',

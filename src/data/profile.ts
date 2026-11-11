@@ -56,16 +56,16 @@ export const profile = {
     'Photoshop',
     'Google Analytics',
   ],
-  languages: ['Danish — native', 'English — fluent'],
+  languages: ['Danish (native)', 'English (fluent)'],
   education: [
     {
-      period: '2024 — 2026',
+      period: '2024 to 2026',
       institution: 'IT University of Copenhagen',
       qualification: 'MSc in Digital Design and Interactive Technologies',
       note: 'Focus on UX, interaction design and AI',
     },
     {
-      period: '2021 — 2024',
+      period: '2021 to 2024',
       institution: 'Aarhus University',
       qualification: 'BA in Information Studies',
     },
@@ -98,9 +98,9 @@ export const profile = {
       ],
     },
     {
-      period: 'Sep 2022 — Jun 2024',
+      period: 'Sep 2022 to Jun 2024',
       organisation: 'People-IT',
-      title: 'Student Assistant — Digital Design & Communication',
+      title: 'Student Assistant, Digital Design & Communication',
       place: 'Aarhus',
       summary: '',
       points: [

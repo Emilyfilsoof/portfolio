@@ -4,6 +4,7 @@ import ClientWork from '@/components/ClientWork';
 import EmbedFrame from '@/components/EmbedFrame';
 import Reveal from '@/components/Reveal';
 import Scramble from '@/components/Scramble';
+import IntroReplay from '@/components/IntroReplay';
 import Smooth from '@/components/Smooth';
 import { profile } from '@/data/profile';
 import styles from './signifly.module.css';
@@ -17,15 +18,27 @@ export const metadata: Metadata = {
   title: 'Til Signifly',
   description: 'Ansøgning til stillingen som Creative Developer hos Signifly.',
   robots: { index: false, follow: false },
+  openGraph: {
+    title: 'Til Signifly | Emily Filsoof, Creative Developer',
+    description: 'Ansøgning til stillingen som Creative Developer: smooth frontend, interaktion i produktion og agentic engineering.',
+    url: '/signifly',
+    siteName: profile.shortName,
+    locale: 'da_DK',
+    type: 'website',
+  },
 };
 
 const REPO = 'https://github.com/Emilyfilsoof/portfolio';
 const CV = '/cv/EmilyFilsoof_CV_CreativeDeveloper.pdf';
 
-const handmade = [
-  { term: 'Intro', detail: 'Discipliner skifter, mit navn scrambler, og pladen glider op.' },
+const handmade: { term: string; detail: string; touch?: string; replay?: boolean }[] = [
+  { term: 'Intro', detail: 'Discipliner skifter, mit navn scrambler, og pladen glider op.', replay: true },
   { term: 'Ring-cursor', detail: 'Vokser over projekter og trækker magnetisk i links og knapper.' },
-  { term: 'Scramble-labels', detail: 'Prøv at holde musen over overskrifterne på den her side.' },
+  {
+    term: 'Scramble-labels',
+    detail: 'Prøv at holde musen over overskrifterne på den her side.',
+    touch: 'Prøv at trykke på overskrifterne på den her side.',
+  },
   { term: 'Marquee og tilt', detail: 'Scroll-drevet typebånd og projektkort, der vipper i 3D.' },
   { term: 'Farveskift', detail: 'Baggrunden følger den sektion, du er i, så der aldrig blinker en forkert farve.' },
   { term: 'Smooooth', detail: 'Ét requestAnimationFrame-loop, der skriver direkte til DOM. Ingen re-renders.' },
@@ -52,7 +65,7 @@ const gitLog = [
 
 export default function SigniflyPage() {
   return (
-    <>
+    <div lang="da">
       <section className={`page ${styles.hero}`} data-bg="#f4f2ec" data-ink="#0c0c0c">
         <div className={styles.heroTop}>
           <Scramble className="label label-ink" text="Ansøgning · Creative Developer · Signifly" />
@@ -67,7 +80,10 @@ export default function SigniflyPage() {
               <Smooth />
             </span>
           </h1>
-          <p className={styles.hint}>Bevæg musen hurtigt, eller scroll. Ordet følger med.</p>
+          <p className={styles.hint}>
+            <span className={styles.hintPointer}>Bevæg musen hurtigt, eller scroll. Ordet følger med.</span>
+            <span className={styles.hintTouch}>Scroll hurtigt. Ordet følger med.</span>
+          </p>
         </div>
 
         <div className={styles.heroBottom}>
@@ -91,7 +107,7 @@ export default function SigniflyPage() {
 
       <section className={`page ${styles.section}`} data-bg="#f4f2ec" data-ink="#0c0c0c">
         <div className={styles.sectionHead}>
-          <Scramble className="label" text="01 · Smooth frontend og interaktioner" />
+          <Scramble className="label label-ink" text="01 · Smooth frontend og interaktioner" />
           <h2 className={styles.h2}>Alt, der bevæger sig på emilyfilsoof.com, er bygget fra bunden.</h2>
           <p className={styles.note}>Ingen animationsbiblioteker. Respekterer prefers-reduced-motion.</p>
         </div>
@@ -100,7 +116,15 @@ export default function SigniflyPage() {
             <Reveal as="li" key={item.term} delay={i * 60} className={styles.cell}>
               <span className={styles.no}>{String(i + 1).padStart(2, '0')}</span>
               <Scramble className={styles.term} text={item.term} />
-              <span className={styles.detail}>{item.detail}</span>
+              {item.touch ? (
+                <span className={styles.detail}>
+                  <span className={styles.hintPointer}>{item.detail}</span>
+                  <span className={styles.hintTouch}>{item.touch}</span>
+                </span>
+              ) : (
+                <span className={styles.detail}>{item.detail}</span>
+              )}
+              {item.replay && <IntroReplay className={styles.replay} label="Afspil introen ↺" />}
             </Reveal>
           ))}
         </ol>
@@ -126,7 +150,7 @@ export default function SigniflyPage() {
 
       <section className={`page ${styles.section}`} data-bg="#f4f2ec" data-ink="#0c0c0c">
         <div className={styles.sectionHead}>
-          <Scramble className="label" text="03 · Agentic engineering, med håndværket i centrum" />
+          <Scramble className="label label-ink" text="03 · Agentic engineering, med håndværket i centrum" />
           <h2 className={styles.h2}>Agenten skriver koden. Arkitekturen bestemmer, hvad den må.</h2>
         </div>
         <div className={styles.split}>
@@ -170,22 +194,22 @@ export default function SigniflyPage() {
       </section>
 
       <div id="shipped">
-        <ClientWork label="04 · Shipped: live sites" note="Klik på et site for at se, hvad jeg byggede" />
+        <ClientWork label="04 · Shipped: live sites" note="Klik på et site for at se, hvad jeg byggede" from="signifly" />
       </div>
 
-      <section className={`page ${styles.section}`} data-bg="#f4f2ec" data-ink="#0c0c0c">
+      <section id="more" className={`page ${styles.section}`} data-bg="#f4f2ec" data-ink="#0c0c0c">
         <div className={styles.sectionHead}>
-          <Scramble className="label" text="05 · Mere kreativ kode" />
+          <Scramble className="label label-ink" text="05 · Mere kreativ kode" />
         </div>
         <div className={styles.more}>
-          <Link href="/work/ambient-motion-painter" className={styles.moreCard} data-cursor="Open">
+          <Link href="/work/ambient-motion-painter?fra=signifly" className={styles.moreCard} data-cursor="Open">
             <span className={styles.moreTitle}>Ambient Motion Painter</span>
             <span className={styles.detail}>
               Telefonens kamera og bevægelsessensorer bliver en pensel: to p5.js-sketches forbundet over MQTT maler,
               mens man går.
             </span>
           </Link>
-          <Link href="/work/breathing-the-city" className={styles.moreCard} data-cursor="Open">
+          <Link href="/work/breathing-the-city?fra=signifly" className={styles.moreCard} data-cursor="Open">
             <span className={styles.moreTitle}>Breathing the City</span>
             <span className={styles.detail}>
               Mit speciale: en håndsyet åndedrætsmaske og et feltkit, testet med fire løbere over fire uger.
@@ -215,6 +239,6 @@ export default function SigniflyPage() {
         </div>
         <p className={styles.ctaNote}>Taler og skriver dansk og arbejder gerne på engelsk.</p>
       </section>
-    </>
+    </div>
   );
 }
