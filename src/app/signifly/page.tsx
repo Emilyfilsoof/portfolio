@@ -225,25 +225,45 @@ export default function SigniflyPage() {
       </section>
 
       <section className={`page ${styles.cta}`} data-bg="#00e5ff" data-ink="#0c0c0c">
-        <h2 className={styles.ctaTitle}>Skal vi tage en snak?</h2>
-        <div className={styles.contact}>
-          <a href={`mailto:${profile.contact.email}`} data-mag>
-            {profile.contact.email}
-          </a>
-          <a href={`tel:${profile.contact.phoneHref}`} data-mag>
-            +45 {profile.contact.phone}
-          </a>
-          <a href={profile.contact.linkedinHref} target="_blank" rel="noreferrer" data-mag>
-            LinkedIn ↗
-          </a>
-          <a href={REPO} target="_blank" rel="noreferrer" data-mag>
-            GitHub ↗
-          </a>
-          <a href={CV} target="_blank" rel="noreferrer" data-mag>
-            CV (PDF)
-          </a>
+        <div className={styles.ctaGrid}>
+          <div className={styles.ctaText}>
+            <h2 className={styles.ctaTitle}>Skal vi tage en snak?</h2>
+            <div className={styles.contact}>
+              <a href={`mailto:${profile.contact.email}`} data-mag>
+                {profile.contact.email}
+              </a>
+              <a href={`tel:${profile.contact.phoneHref}`} data-mag>
+                +45 {profile.contact.phone}
+              </a>
+              <a href={profile.contact.linkedinHref} target="_blank" rel="noreferrer" data-mag>
+                LinkedIn ↗
+              </a>
+              <a href={REPO} target="_blank" rel="noreferrer" data-mag>
+                GitHub ↗
+              </a>
+              <a href={CV} target="_blank" rel="noreferrer" data-mag>
+                CV (PDF)
+              </a>
+            </div>
+            <p className={styles.ctaNote}>Taler og skriver dansk og arbejder gerne på engelsk.</p>
+          </div>
+          <figure className={styles.ctaPortrait}>
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img
+              src="/images/emily-portrait.webp"
+              alt="Portræt af Emily Rose Shereen Filsoof"
+              width={1115}
+              height={1115}
+              loading="lazy"
+              decoding="async"
+            />
+            <figcaption>
+              Emily Rose Shereen Filsoof
+              <br />
+              København
+            </figcaption>
+          </figure>
         </div>
-        <p className={styles.ctaNote}>Taler og skriver dansk og arbejder gerne på engelsk.</p>
       </section>
     </div>
   );

@@ -462,6 +462,67 @@
   max-width: none;
 }
 
+/* Portrait next to the contact block: a face where they decide to write. */
+.ctaGrid {
+  display: grid;
+  gap: 28px;
+  grid-template-areas: 'portrait' 'text';
+}
+
+.ctaText {
+  grid-area: text;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  min-width: 0;
+}
+
+.ctaPortrait {
+  grid-area: portrait;
+  margin: 0;
+  display: flex;
+  align-items: flex-end;
+  gap: 16px;
+}
+
+.ctaPortrait img {
+  display: block;
+  width: 104px;
+  height: auto;
+  aspect-ratio: 4 / 5;
+  object-fit: cover;
+  object-position: 50% 25%;
+  border: var(--rule);
+}
+
+.ctaPortrait figcaption {
+  font-family: var(--mono);
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  line-height: 1.7;
+  text-transform: uppercase;
+}
+
+@media (min-width: 900px) {
+  .ctaGrid {
+    grid-template-columns: minmax(0, 1fr) auto;
+    grid-template-areas: 'text portrait';
+    align-items: end;
+    column-gap: clamp(32px, 5vw, 80px);
+  }
+
+  .ctaPortrait {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 12px;
+  }
+
+  .ctaPortrait img {
+    width: clamp(200px, 19vw, 290px);
+  }
+}
+
 .ctaTitle {
   margin: 0;
   font-size: clamp(40px, 9vw, 160px);
