@@ -15,11 +15,8 @@ export const INTRO_REPLAY = 'ef:intro-replay';
 
 /**
  * Three-second opening: the disciplines cycle, the name scrambles into place,
- * then the plate wipes up and the headline words stagger in.
- *
- * It plays once per visit. A small script in the layout marks the page with
- * data-intro="skip" before first paint when the visitor has seen it in the last
- * half hour, or lands on an application page, so the plate never flashes.
+ * then the plate wipes up and the headline words stagger in. Runs on every
+ * page load by design; <IntroReplay /> can play it again on demand.
  */
 export default function Intro() {
   const [text, setText] = useState<string>(introWords[0]);
@@ -83,7 +80,7 @@ export default function Intro() {
     const root = document.documentElement;
     const reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
-    if (reduced || root.getAttribute('data-intro') === 'skip') {
+    if (reduced) {
       setGone(true);
       root.setAttribute('data-intro', 'done');
     } else {
