@@ -4,7 +4,6 @@ import ClientWork from '@/components/ClientWork';
 import EmbedFrame from '@/components/EmbedFrame';
 import Reveal from '@/components/Reveal';
 import Scramble from '@/components/Scramble';
-import IntroReplay from '@/components/IntroReplay';
 import Smooth from '@/components/Smooth';
 import { profile } from '@/data/profile';
 import styles from './signifly.module.css';
@@ -31,8 +30,8 @@ export const metadata: Metadata = {
 const REPO = 'https://github.com/Emilyfilsoof/portfolio';
 const CV = '/cv/EmilyFilsoof_CV_CreativeDeveloper.pdf';
 
-const handmade: { term: string; detail: string; touch?: string; replay?: boolean }[] = [
-  { term: 'Intro', detail: 'Discipliner skifter, mit navn scrambler, og pladen glider op.', replay: true },
+const handmade: { term: string; detail: string; touch?: string }[] = [
+  { term: 'Intro', detail: 'Discipliner skifter, mit navn scrambler, og pladen glider op.' },
   { term: 'Ring-cursor', detail: 'Vokser over projekter og trækker magnetisk i links og knapper.' },
   {
     term: 'Scramble-labels',
@@ -132,7 +131,6 @@ export default function SigniflyPage() {
               ) : (
                 <span className={styles.detail}>{item.detail}</span>
               )}
-              {item.replay && <IntroReplay className={styles.replay} label="Afspil introen ↺" />}
             </Reveal>
           ))}
         </ol>

@@ -10,13 +10,10 @@ const STEP = 200;
 const SCRAMBLE_FRAMES = 18;
 const SCRAMBLE_MS = 38;
 
-/** Fired by <IntroReplay /> to play the intro again on demand. */
-export const INTRO_REPLAY = 'ef:intro-replay';
-
 /**
  * Three-second opening: the disciplines cycle, the name scrambles into place,
  * then the plate wipes up and the headline words stagger in. Runs on every
- * page load by design; <IntroReplay /> can play it again on demand.
+ * page load by design.
  */
 export default function Intro() {
   const [text, setText] = useState<string>(introWords[0]);
@@ -87,14 +84,7 @@ export default function Intro() {
       play();
     }
 
-    const replay = () => {
-      if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
-      play();
-    };
-    window.addEventListener(INTRO_REPLAY, replay);
-
     return () => {
-      window.removeEventListener(INTRO_REPLAY, replay);
       cleanup.current?.();
     };
   }, [play]);
