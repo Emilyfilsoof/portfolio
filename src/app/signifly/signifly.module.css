@@ -172,6 +172,21 @@
   text-wrap: balance;
 }
 
+/* A link inside a display heading: a cyan underline that fills on hover. */
+.inlineLink {
+  text-decoration: underline;
+  text-decoration-color: var(--accent);
+  text-decoration-thickness: 0.12em;
+  text-underline-offset: 0.08em;
+  transition: background var(--dur) var(--ease);
+}
+
+.inlineLink:hover,
+.inlineLink:focus-visible {
+  background: var(--accent);
+  text-decoration-color: var(--ink);
+}
+
 /* "EMILYFILSOOF.COM," is one word; on 320px phones it needs a smaller size to fit. */
 @media (max-width: 360px) {
   .h2 {

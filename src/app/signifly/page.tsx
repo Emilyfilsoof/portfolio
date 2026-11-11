@@ -108,7 +108,13 @@ export default function SigniflyPage() {
       <section className={`page ${styles.section}`} data-bg="#f4f2ec" data-ink="#0c0c0c">
         <div className={styles.sectionHead}>
           <Scramble className="label label-ink" text="01 · Smooth frontend og interaktioner" />
-          <h2 className={styles.h2}>Alt, der bevæger sig på emilyfilsoof.com, er bygget fra bunden.</h2>
+          <h2 className={styles.h2}>
+            Alt, der bevæger sig på{' '}
+            <Link href="/" className={styles.inlineLink} data-cursor="Åbn">
+              emilyfilsoof.com
+            </Link>
+            , er bygget fra bunden.
+          </h2>
           <p className={styles.note}>Ingen animationsbiblioteker. Respekterer prefers-reduced-motion.</p>
         </div>
         <ol className={styles.grid3}>
