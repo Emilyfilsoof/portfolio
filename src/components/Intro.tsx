@@ -95,6 +95,29 @@ export default function Intro() {
     root.setAttribute('data-intro', 'running');
     root.removeAttribute('data-stage');
 
+    // The word is the intro, so the page always starts at the top here, even on
+    // a reload further down (the browser would otherwise restore the scroll).
+    // Scrolling is held until the plate lifts.
+    history.scrollRestoration = 'manual';
+    const toTop = () => window.scrollTo(0, 0);
+    toTop();
+    requestAnimationFrame(toTop);
+    window.addEventListener('load', toTop, { once: true });
+    const hold = (e: Event) => e.preventDefault();
+    const keys = (e: KeyboardEvent) => {
+      if ([' ', 'PageDown', 'PageUp', 'ArrowDown', 'ArrowUp', 'Home', 'End'].includes(e.key)) e.preventDefault();
+    };
+    window.addEventListener('wheel', hold, { passive: false });
+    window.addEventListener('touchmove', hold, { passive: false });
+    window.addEventListener('keydown', keys);
+    const release = () => {
+      history.scrollRestoration = 'auto';
+      window.removeEventListener('wheel', hold);
+      window.removeEventListener('touchmove', hold);
+      window.removeEventListener('keydown', keys);
+      window.removeEventListener('load', toTop);
+    };
+
     const timers = [
       setTimeout(
         () => window.dispatchEvent(new CustomEvent(SMOOTH_SURGE, { detail: { ms: STAGE.surgeMs } })),
@@ -103,6 +126,7 @@ export default function Intro() {
       setTimeout(() => {
         setWiping(true);
         root.setAttribute('data-intro', 'done');
+        release();
       }, STAGE.wipeAt),
       setTimeout(() => {
         setGone(true);
@@ -112,6 +136,7 @@ export default function Intro() {
 
     cleanup.current = () => {
       timers.forEach(clearTimeout);
+      release();
       root.setAttribute('data-intro', 'done');
       root.setAttribute('data-stage', 'off');
     };
@@ -138,6 +163,21 @@ export default function Intro() {
     // The intro belongs to the page load, not to later client-side navigation.
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [play, playStage]);
+
+  // On /signifly a reload starts at the top, so the browser is told not to
+  // restore the scroll only as the page unloads. Back and forward inside the
+  // site keep normal scroll restoration.
+  useEffect(() => {
+    if (!stage) return;
+    const onHide = () => {
+      history.scrollRestoration = 'manual';
+    };
+    window.addEventListener('pagehide', onHide);
+    return () => {
+      window.removeEventListener('pagehide', onHide);
+      history.scrollRestoration = 'auto';
+    };
+  }, [stage]);
 
   if (gone) return null;
 

@@ -31,7 +31,7 @@ const REPO = 'https://github.com/Emilyfilsoof/portfolio';
 const CV = '/cv/EmilyFilsoof_CV_CreativeDeveloper.pdf';
 
 const handmade: { term: string; detail: string; touch?: string }[] = [
-  { term: 'Intro', detail: 'På forsiden skifter disciplinerne, og mit navn scrambler. Her strækker ordet sig, og siden kommer frem under det.' },
+  { term: 'Intro', detail: 'På forsiden skifter disciplinerne, og mit navn scrambler.' },
   { term: 'Ring-cursor', detail: 'Vokser over projekter og trækker magnetisk i links og knapper.' },
   {
     term: 'Scramble-labels',
