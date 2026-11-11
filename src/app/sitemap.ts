@@ -3,7 +3,7 @@ import { projects } from '@/data/projects';
 import { clientWork } from '@/data/client-work';
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  const base = 'https://emilyfilsoof.com';
+  const base = 'https://www.emilyfilsoof.com';
   return [
     { url: base, priority: 1 },
     { url: `${base}/work`, priority: 0.8 },

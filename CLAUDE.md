@@ -27,7 +27,9 @@ every change.
 - Images in `public/images` are WebP, at most 2000px wide. Measure page weight
   after adding any; a case page should stay well under 3 MB on mobile.
 - Fonts are self-hosted from `public/fonts`. No requests to third-party font
-  or analytics hosts.
+  or analytics hosts (embeds in `public/embeds` mirror client code as it runs
+  live and are the exception).
+- The live domain is www.emilyfilsoof.com; the bare domain redirects to it.
 
 ## Writing
 

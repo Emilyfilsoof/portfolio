@@ -9,7 +9,7 @@ import { profile } from '@/data/profile';
 import './globals.css';
 
 export const metadata: Metadata = {
-  metadataBase: new URL('https://emilyfilsoof.com'),
+  metadataBase: new URL('https://www.emilyfilsoof.com'),
   title: {
     default: `${profile.shortName} | ${profile.role}`,
     template: `%s | ${profile.shortName}`,
