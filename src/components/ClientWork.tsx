@@ -12,7 +12,13 @@ import styles from './ClientWork.module.css';
 export default function ClientWork({
   label = 'Client work',
   note = 'Live sites · Click to see what I built',
-}: { label?: string; note?: string } = {}) {
+  from,
+}: {
+  label?: string;
+  note?: string;
+  /** Origin key carried to the case pages, so their back link returns here. */
+  from?: string;
+} = {}) {
   return (
     <section className={`page ${styles.wrap}`} id="client-work" data-bg="#f4f2ec" data-ink="#0c0c0c">
       <div className={styles.head}>
@@ -26,7 +32,7 @@ export default function ClientWork({
           return (
             <Link
               key={project.id}
-              href={`/client/${project.id}`}
+              href={`/client/${project.id}${from ? `?fra=${from}` : ''}`}
               className={styles.card}
               data-cursor="Open"
             >

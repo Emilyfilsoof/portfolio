@@ -66,3 +66,14 @@
     width: 100%;
   }
 }
+
+/* Set before first paint by the script in layout.tsx: no plate, no flash. */
+:global(html[data-intro='skip']) .plate {
+  display: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .plate {
+    display: none;
+  }
+}

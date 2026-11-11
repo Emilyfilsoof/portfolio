@@ -1,6 +1,6 @@
 'use client';
 
-import { useEffect, useState } from 'react';
+import { useCallback, useEffect, useRef, useState } from 'react';
 import { introWords } from '@/data/site-v4';
 import styles from './Intro.module.css';
 
@@ -10,24 +10,31 @@ const STEP = 200;
 const SCRAMBLE_FRAMES = 18;
 const SCRAMBLE_MS = 38;
 
+/** Fired by <IntroReplay /> to play the intro again on demand. */
+export const INTRO_REPLAY = 'ef:intro-replay';
+
 /**
  * Three-second opening: the disciplines cycle, the name scrambles into place,
- * then the plate wipes up and the headline words stagger in. Runs on every
- * visit by design.
+ * then the plate wipes up and the headline words stagger in.
+ *
+ * It plays once per visit. A small script in the layout marks the page with
+ * data-intro="skip" before first paint when the visitor has seen it in the last
+ * half hour, or lands on an application page, so the plate never flashes.
  */
 export default function Intro() {
   const [text, setText] = useState<string>(introWords[0]);
   const [wiping, setWiping] = useState(false);
   const [gone, setGone] = useState(false);
+  const cleanup = useRef<() => void>();
 
-  useEffect(() => {
-    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
-      setGone(true);
-      return;
-    }
-
+  const play = useCallback(() => {
+    cleanup.current?.();
     const root = document.documentElement;
     root.setAttribute('data-intro', 'running');
+    setText(introWords[0]);
+    setWiping(false);
+    setGone(false);
+
     const timers: ReturnType<typeof setTimeout>[] = [];
     let scrambler: ReturnType<typeof setInterval> | undefined;
 
@@ -65,12 +72,35 @@ export default function Intro() {
 
     timers.push(setTimeout(() => setGone(true), nameAt + 1700));
 
-    return () => {
+    cleanup.current = () => {
       timers.forEach(clearTimeout);
       if (scrambler) clearInterval(scrambler);
       root.setAttribute('data-intro', 'done');
     };
   }, []);
+
+  useEffect(() => {
+    const root = document.documentElement;
+    const reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+    if (reduced || root.getAttribute('data-intro') === 'skip') {
+      setGone(true);
+      root.setAttribute('data-intro', 'done');
+    } else {
+      play();
+    }
+
+    const replay = () => {
+      if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+      play();
+    };
+    window.addEventListener(INTRO_REPLAY, replay);
+
+    return () => {
+      window.removeEventListener(INTRO_REPLAY, replay);
+      cleanup.current?.();
+    };
+  }, [play]);
 
   if (gone) return null;
 

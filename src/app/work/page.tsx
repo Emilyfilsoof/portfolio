@@ -1,14 +1,16 @@
 import type { Metadata } from 'next';
+import { pageMeta } from '../meta';
 import WorkTiles from '@/components/WorkTiles';
 import ClientWork from '@/components/ClientWork';
 import { projects } from '@/data/projects';
 import styles from './page.module.css';
 
-export const metadata: Metadata = {
+export const metadata: Metadata = pageMeta({
   title: 'Work',
+  path: '/work',
   description:
     'Live sites for DSB, The Green Log, Bæredygtigt Kulturliv NU and Hairholic, and four projects: a public-service product concept for DR, an MSc thesis on wearable interaction, a participatory design study of diabetes alarms, and a sensor-driven generative system.',
-};
+});
 
 export default function WorkPage() {
   return (

@@ -1,4 +1,5 @@
 import { Fragment } from 'react';
+import type { Metadata } from 'next';
 import Marquee from '@/components/Marquee';
 import WorkTiles from '@/components/WorkTiles';
 import WorkedWith from '@/components/WorkedWith';
@@ -9,6 +10,8 @@ import { projects } from '@/data/projects';
 import { profile } from '@/data/profile';
 import { about, heroKicker, heroMeta, heroName, manifest, positioning } from '@/data/site-v4';
 import styles from './page.module.css';
+
+export const metadata: Metadata = { alternates: { canonical: '/' } };
 
 /** Words stagger in after the intro plate lifts; see globals.css .word */
 function Words({ text, offset = 0, mark = false }: { text: string; offset?: number; mark?: boolean }) {
@@ -90,7 +93,7 @@ export default function HomePage() {
             {/* eslint-disable-next-line @next/next/no-img-element */}
             <img
               className={styles.portrait}
-              src="/images/emily-portrait.jpg"
+              src="/images/emily-portrait.webp"
               alt={profile.name}
               width={600}
               height={750}

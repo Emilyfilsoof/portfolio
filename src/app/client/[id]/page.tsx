@@ -1,8 +1,9 @@
 import type { CSSProperties } from 'react';
 import type { Metadata } from 'next';
-import Link from 'next/link';
 import { notFound } from 'next/navigation';
+import { pageMeta } from '../../meta';
 import EmbedFrame from '@/components/EmbedFrame';
+import { BackLink, CarryLink } from '@/components/OriginLink';
 import { clientWork } from '@/data/client-work';
 import type { ClientShot } from '@/data/client-work';
 import caseStyles from '../../work/[slug]/case.module.css';
@@ -19,7 +20,13 @@ export function generateStaticParams() {
 export function generateMetadata({ params }: Params): Metadata {
   const project = get(params.id);
   if (!project) return {};
-  return { title: project.title, description: project.summary };
+  const cover = project.shots[0];
+  return pageMeta({
+    title: project.title,
+    description: project.summary,
+    path: `/client/${project.id}`,
+    image: { url: cover.src, width: cover.width, height: cover.height, alt: cover.alt },
+  });
 }
 
 /** A screenshot centred on the site's colour, always the same frame. */
@@ -61,9 +68,9 @@ export default function ClientCasePage({ params }: Params) {
         <p className={caseStyles.barLabel}>
           {project.index} · Client work
         </p>
-        <Link href="/#client-work" className={caseStyles.barClose}>
+        <BackLink href="/#client-work" anchor="shipped" className={caseStyles.barClose}>
           Close ×
-        </Link>
+        </BackLink>
       </div>
 
       <div className={caseStyles.column}>
@@ -134,13 +141,13 @@ export default function ClientCasePage({ params }: Params) {
         ) : null}
 
         <div className={caseStyles.end}>
-          <Link href="/#client-work" className={caseStyles.back}>
+          <BackLink href="/#client-work" anchor="shipped" className={caseStyles.back} originLabel>
             Back to the work
-          </Link>
-          <Link href={`/client/${next.id}`} className={caseStyles.nextLink}>
+          </BackLink>
+          <CarryLink href={`/client/${next.id}`} className={caseStyles.nextLink}>
             <span className={caseStyles.nextLabel}>Next site</span>
             <span className={caseStyles.nextTitle}>{next.title}</span>
-          </Link>
+          </CarryLink>
         </div>
       </div>
     </article>
