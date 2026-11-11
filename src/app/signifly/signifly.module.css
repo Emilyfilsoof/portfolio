@@ -1,0 +1,421 @@
+/* ─── /signifly ────────────────────────────────────────────────────────────
+   Same tokens as the rest of the site. The hero is the one place that moves:
+   everything else stays calm so the work is what you look at. */
+
+/* Hero */
+.hero {
+  min-height: 100svh;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: clamp(28px, 5vw, 64px);
+  padding-block: clamp(24px, 3vw, 44px);
+}
+
+.heroTop {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 10px 32px;
+  border-bottom: var(--rule);
+  padding-bottom: 14px;
+}
+
+.meta,
+.hint,
+.note,
+.no,
+.codeBar,
+.ctaNote {
+  font-family: var(--mono);
+  text-transform: uppercase;
+}
+
+.meta {
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.2em;
+}
+
+.heroMain {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+  min-width: 0;
+}
+
+.title {
+  margin: 0;
+  font-size: clamp(36px, min(8.6vw, 11svh), 156px);
+  line-height: 0.86;
+  letter-spacing: -0.045em;
+  font-weight: 900;
+  font-stretch: 112%;
+  text-transform: uppercase;
+  display: flex;
+  flex-direction: column;
+}
+
+.line {
+  display: block;
+}
+
+.smoothLine {
+  background: var(--accent);
+  align-self: flex-start;
+  padding: 0.02em 0.08em 0;
+  margin-left: -0.08em;
+  max-width: calc(100% + 0.08em);
+  overflow: hidden;
+}
+
+.hint {
+  margin: 0;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  color: var(--grey);
+}
+
+.heroBottom {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: 22px;
+  align-items: end;
+}
+
+@media (min-width: 900px) {
+  .heroBottom {
+    grid-template-columns: minmax(0, 1.2fr) auto;
+  }
+}
+
+.lead {
+  margin: 0;
+  font-size: clamp(17px, 1.5vw, 23px);
+  line-height: 1.45;
+  max-width: 52ch;
+}
+
+.actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.primary,
+.secondary {
+  font-family: var(--mono);
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  padding: 14px 18px;
+  border: var(--rule);
+  transition: background var(--dur) var(--ease), color var(--dur) var(--ease),
+    transform 400ms var(--ease-out);
+}
+
+.primary {
+  background: var(--ink);
+  color: var(--paper);
+}
+
+.primary:hover {
+  background: var(--accent);
+  color: var(--ink);
+}
+
+.secondary:hover {
+  background: var(--ink);
+  color: var(--paper);
+}
+
+/* Sections */
+.section {
+  padding-block: clamp(56px, 8vw, 128px);
+  display: flex;
+  flex-direction: column;
+  gap: clamp(24px, 3.4vw, 48px);
+}
+
+.sectionHead {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  max-width: 1100px;
+}
+
+.h2 {
+  margin: 0;
+  font-size: clamp(28px, 4.6vw, 72px);
+  line-height: 0.92;
+  letter-spacing: -0.04em;
+  font-weight: 900;
+  font-stretch: 112%;
+  text-transform: uppercase;
+  text-wrap: balance;
+}
+
+.note {
+  margin: 0;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  color: var(--grey);
+}
+
+/* 01: handmade list */
+.grid3 {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  border-top: var(--rule);
+}
+
+@media (min-width: 700px) {
+  .grid3 {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (min-width: 1100px) {
+  .grid3 {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
+
+.cell {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  padding: 20px 20px 26px 0;
+  border-bottom: var(--rule-hair);
+}
+
+.no {
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  color: var(--grey);
+}
+
+.term {
+  font-weight: 900;
+  font-stretch: 112%;
+  font-size: 22px;
+  line-height: 1;
+  letter-spacing: -0.02em;
+  text-transform: uppercase;
+}
+
+.detail {
+  font-size: 15px;
+  line-height: 1.55;
+  color: var(--grey);
+  max-width: 44ch;
+}
+
+/* 02: dark band with the live embed */
+.dark {
+  background: var(--ink);
+  color: var(--paper);
+}
+
+.dark :global(.label) {
+  color: var(--accent);
+}
+
+.bodyDark {
+  margin: 0;
+  font-size: clamp(16px, 1.3vw, 19px);
+  line-height: 1.6;
+  max-width: 64ch;
+  color: rgba(244, 242, 236, 0.8);
+}
+
+.embed {
+  border: 1px solid rgba(244, 242, 236, 0.3);
+  background: #2f5a34;
+}
+
+.iframe {
+  display: block;
+  width: 100%;
+  border: 0;
+  transition: height 300ms var(--ease);
+}
+
+/* 03: rules and code */
+.split {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: clamp(24px, 3vw, 48px);
+  align-items: start;
+}
+
+@media (min-width: 1000px) {
+  .split {
+    grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr);
+  }
+}
+
+.rules {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  border-top: var(--rule);
+}
+
+.rules li {
+  padding: 18px 0;
+  border-bottom: var(--rule-hair);
+  font-size: 16px;
+  line-height: 1.6;
+}
+
+.rules b {
+  display: block;
+  font-weight: 800;
+  font-size: 18px;
+  margin-bottom: 4px;
+}
+
+.code {
+  background: var(--ink);
+  color: var(--paper);
+  min-width: 0;
+}
+
+.codeBar {
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: none;
+  padding: 10px 14px;
+  border-bottom: 1px solid rgba(244, 242, 236, 0.18);
+  color: var(--accent);
+}
+
+.pre {
+  margin: 0;
+  padding: 16px 14px 20px;
+  font-family: var(--mono);
+  font-size: 12px;
+  line-height: 1.7;
+  overflow-x: auto;
+  white-space: pre;
+}
+
+.hash {
+  color: var(--accent);
+}
+
+.trailer {
+  color: rgba(244, 242, 236, 0.55);
+}
+
+.logLine {
+  display: inline;
+}
+
+/* On phones the code wraps instead of scrolling sideways. */
+@media (max-width: 700px) {
+  .pre {
+    white-space: pre-wrap;
+    overflow-wrap: anywhere;
+    font-size: 11px;
+  }
+}
+
+/* 05: more creative code */
+.more {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: 12px;
+}
+
+@media (min-width: 760px) {
+  .more {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+.moreCard {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding: 22px;
+  border: var(--rule);
+  transition: background var(--dur) var(--ease);
+}
+
+.moreCard:hover {
+  background: var(--accent);
+}
+
+.moreTitle {
+  font-weight: 900;
+  font-stretch: 112%;
+  font-size: clamp(22px, 2.4vw, 34px);
+  line-height: 0.95;
+  letter-spacing: -0.03em;
+  text-transform: uppercase;
+}
+
+.moreCard .detail {
+  color: var(--ink);
+}
+
+/* CTA */
+.cta {
+  background: var(--accent);
+  padding-block: clamp(56px, 8vw, 120px);
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  max-width: none;
+}
+
+.ctaTitle {
+  margin: 0;
+  font-size: clamp(40px, 9vw, 160px);
+  line-height: 0.84;
+  letter-spacing: -0.045em;
+  font-weight: 900;
+  font-stretch: 112%;
+  text-transform: uppercase;
+}
+
+.contact {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.contact a {
+  font-family: var(--mono);
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  padding: 14px 18px;
+  border: var(--rule);
+  background: var(--paper);
+  overflow-wrap: anywhere;
+  transition: background var(--dur) var(--ease), color var(--dur) var(--ease),
+    transform 400ms var(--ease-out);
+}
+
+.contact a:hover {
+  background: var(--ink);
+  color: var(--paper);
+}
+
+.ctaNote {
+  margin: 0;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.18em;
+}

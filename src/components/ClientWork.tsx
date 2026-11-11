@@ -9,12 +9,15 @@ import styles from './ClientWork.module.css';
  * single screenshot on a coloured ground with a two-line caption; everything
  * else lives on /client/[id].
  */
-export default function ClientWork() {
+export default function ClientWork({
+  label = 'Client work',
+  note = 'Live sites · Click to see what I built',
+}: { label?: string; note?: string } = {}) {
   return (
     <section className={`page ${styles.wrap}`} id="client-work" data-bg="#f4f2ec" data-ink="#0c0c0c">
       <div className={styles.head}>
-        <Scramble className="label label-ink" text="Client work" />
-        <p className={styles.note}>Live sites · Click to see what I built</p>
+        <Scramble className="label label-ink" text={label} />
+        <p className={styles.note}>{note}</p>
       </div>
 
       <div className={styles.grid}>

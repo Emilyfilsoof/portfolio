@@ -1,0 +1,14 @@
+.word {
+  display: inline-block;
+  white-space: nowrap;
+  color: var(--ink);
+}
+
+/* Each O is a clipped box whose width follows --k (0 to 1). */
+.o {
+  display: inline-block;
+  overflow: hidden;
+  vertical-align: bottom;
+  max-width: calc(var(--k) * 0.95em);
+  opacity: calc(0.25 + var(--k) * 0.75);
+}

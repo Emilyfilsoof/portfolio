@@ -1,6 +1,7 @@
-# Emily Rose Shereen Filsoof — Portfolio v4
+# Emily Rose Shereen Filsoof: Portfolio
 
-Standalone Next.js 14 site. Nothing outside this folder is required.
+Standalone Next.js 14 + TypeScript site, live at [emilyfilsoof.com](https://emilyfilsoof.com).
+Built with Claude Code as a working partner; the rules agents follow are in [CLAUDE.md](CLAUDE.md).
 
 ## Run it
 
@@ -30,9 +31,11 @@ Then add your domain under Project → Settings → Domains.
 
 | Route | What it is |
 | --- | --- |
-| `/` | The v4 homepage: intro plate → manifest headline → marquee → four project tiles → stats → Worked with → About → contact |
+| `/` | Homepage: intro plate, manifest headline, marquee, client work, research projects, Worked with, About, contact |
 | `/work` | The same four tiles with a short introduction |
 | `/work/[slug]` | The four full case pages (`vores-side`, `breathing-the-city`, `diabetes-alarms`, `ambient-motion-painter`) |
+| `/client/[id]` | Client work: one page per live site (`vinge`, `green-log`, `bkn`, `hairholic`) |
+| `/signifly` | An application page for one job, kept out of search engines |
 
 There is no `/about` route — About lives on the homepage at `/#about`.
 
@@ -62,6 +65,7 @@ There is no `/about` route — About lives on the homepage at `/#about`.
       profile.ts     factual profile, contact, CV, education, experience
       projects/      one file per case, plus index.ts
       site-v4.ts     presentation data: stats, worked-with, manifest sentence, marquee, intro words
+      client-work.ts live client sites: screenshots, roles, what was built
     public/
       images/        all case imagery + portrait.jpg
       cv/EmilyFilsoof_CV_2026.pdf
