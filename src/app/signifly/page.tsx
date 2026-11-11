@@ -75,7 +75,7 @@ export default function SigniflyPage() {
         <div className={styles.heroMain}>
           <h1 className={styles.title}>
             <span className={styles.line}>Hej Signifly.</span>
-            <span className={styles.line}>Jeg bygger det</span>
+            <span className={styles.line}>Min frontend føles</span>
             <span className={`${styles.line} ${styles.smoothLine}`}>
               <Smooth />
             </span>
@@ -219,7 +219,7 @@ export default function SigniflyPage() {
       </section>
 
       <section className={`page ${styles.cta}`} data-bg="#00e5ff" data-ink="#0c0c0c">
-        <h2 className={styles.ctaTitle}>Lad os tale om det.</h2>
+        <h2 className={styles.ctaTitle}>Skal vi tage en snak?</h2>
         <div className={styles.contact}>
           <a href={`mailto:${profile.contact.email}`} data-mag>
             {profile.contact.email}
