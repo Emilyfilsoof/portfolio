@@ -1,6 +1,8 @@
 'use client';
 
 import { useCallback, useEffect, useRef, useState } from 'react';
+import { usePathname } from 'next/navigation';
+import { SMOOTH_SURGE } from '@/components/Smooth';
 import { introWords } from '@/data/site-v4';
 import styles from './Intro.module.css';
 
@@ -10,12 +12,26 @@ const STEP = 200;
 const SCRAMBLE_FRAMES = 18;
 const SCRAMBLE_MS = 38;
 
+/** Pages with their own intro: the plate leaves the page's own word on stage. */
+const STAGE_PATHS = ['/signifly'];
+
+/** Stage intro timing, in ms. */
+const STAGE = { surgeAt: 280, surgeMs: 1500, wipeAt: 1880, goneAt: 2500 };
+
 /**
- * Three-second opening: the disciplines cycle, the name scrambles into place,
- * then the plate wipes up and the headline words stagger in. Runs on every
- * page load by design.
+ * Opening plate. Runs on every page load by design.
+ *
+ * Default: the disciplines cycle, the name scrambles into place, then the plate
+ * wipes up and the headline words stagger in.
+ *
+ * Stage (/signifly): there is no copy on the plate. The hero's own "smooooth"
+ * sits above it (see .smoothLine in signifly.module.css), stretches to the edge
+ * of the line and back, and the plate wipes away underneath it, so the word
+ * never moves while the page arrives around it. html[data-stage] says when the
+ * word can drop back into the page.
  */
 export default function Intro() {
+  const stage = STAGE_PATHS.includes(usePathname());
   const [text, setText] = useState<string>(introWords[0]);
   const [wiping, setWiping] = useState(false);
   const [gone, setGone] = useState(false);
@@ -73,6 +89,34 @@ export default function Intro() {
     };
   }, []);
 
+  const playStage = useCallback(() => {
+    cleanup.current?.();
+    const root = document.documentElement;
+    root.setAttribute('data-intro', 'running');
+    root.removeAttribute('data-stage');
+
+    const timers = [
+      setTimeout(
+        () => window.dispatchEvent(new CustomEvent(SMOOTH_SURGE, { detail: { ms: STAGE.surgeMs } })),
+        STAGE.surgeAt,
+      ),
+      setTimeout(() => {
+        setWiping(true);
+        root.setAttribute('data-intro', 'done');
+      }, STAGE.wipeAt),
+      setTimeout(() => {
+        setGone(true);
+        root.setAttribute('data-stage', 'off');
+      }, STAGE.goneAt),
+    ];
+
+    cleanup.current = () => {
+      timers.forEach(clearTimeout);
+      root.setAttribute('data-intro', 'done');
+      root.setAttribute('data-stage', 'off');
+    };
+  }, []);
+
   useEffect(() => {
     const root = document.documentElement;
     const reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
@@ -80,16 +124,36 @@ export default function Intro() {
     if (reduced) {
       setGone(true);
       root.setAttribute('data-intro', 'done');
+      root.setAttribute('data-stage', 'off');
+    } else if (stage) {
+      playStage();
     } else {
+      root.setAttribute('data-stage', 'off');
       play();
     }
 
     return () => {
       cleanup.current?.();
     };
-  }, [play]);
+    // The intro belongs to the page load, not to later client-side navigation.
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [play, playStage]);
 
   if (gone) return null;
+
+  if (stage) {
+    return (
+      <div className={`${styles.plate} ${wiping ? styles.wiping : ''}`} aria-hidden="true">
+        <div className={styles.top}>
+          <p className={styles.meta}>Ansøgning · Creative Developer</p>
+          <p className={styles.metaDim}>Til Signifly</p>
+        </div>
+        <div className={styles.track}>
+          <div className={styles.bar} style={{ animationDuration: `${STAGE.wipeAt}ms` }} />
+        </div>
+      </div>
+    );
+  }
 
   return (
     <div className={`${styles.plate} ${wiping ? styles.wiping : ''}`} aria-hidden="true">

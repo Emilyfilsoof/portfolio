@@ -77,6 +77,52 @@
   color: var(--grey);
 }
 
+/* Stage intro (Intro.tsx): until the plate has gone, the word sits above it
+   (plate is z-index 110), so the plate wipes away underneath the word. */
+:global(html:not([data-stage='off'])) .smoothLine {
+  position: relative;
+  z-index: 111;
+}
+
+/* The rest of the hero arrives once the plate lifts. */
+.heroTop,
+.line:not(.smoothLine),
+.hint,
+.heroBottom {
+  transition: opacity 700ms var(--ease-out), transform 900ms var(--ease-out);
+}
+
+.line:nth-child(2) {
+  transition-delay: 70ms;
+}
+
+.hint {
+  transition-delay: 260ms;
+}
+
+.heroBottom {
+  transition-delay: 340ms;
+}
+
+.heroTop {
+  transition-delay: 120ms;
+}
+
+:global(html[data-intro='running']) .heroTop,
+:global(html[data-intro='running']) .line:not(.smoothLine),
+:global(html[data-intro='running']) .hint,
+:global(html[data-intro='running']) .heroBottom {
+  opacity: 0;
+  transform: translateY(0.5em);
+  transition-delay: 0ms;
+}
+
+:global(html[data-intro='running']) .heroTop,
+:global(html[data-intro='running']) .hint,
+:global(html[data-intro='running']) .heroBottom {
+  transform: translateY(14px);
+}
+
 /* A phone has no mouse: say what works there. */
 .hintTouch {
   display: none;

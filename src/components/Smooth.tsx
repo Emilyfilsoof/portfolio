@@ -6,6 +6,18 @@ import styles from './Smooth.module.css';
 const BASE = 4; // "smooooth", as the job ad spells it
 const MAX = 24;
 
+/** Dispatch on window to stretch the word across the line and back, e.g. from the intro. */
+export const SMOOTH_SURGE = 'ef:smooth-surge';
+
+const easeInOut = (t: number) => (t < 0.5 ? 4 * t * t * t : 1 - (-2 * t + 2) ** 3 / 2);
+
+/** 0 to 1 and back: stretch out, hold for a beat, then let go. */
+const surgeCurve = (t: number) => {
+  if (t < 0.55) return easeInOut(t / 0.55);
+  if (t < 0.68) return 1;
+  return 1 - easeInOut((t - 0.68) / 0.32);
+};
+
 /**
  * The word "smooooth", stretched by how fast you move.
  *
@@ -14,6 +26,9 @@ const MAX = 24;
  * The fractional O grows in, so the word never jumps. All of it runs on one
  * requestAnimationFrame loop that writes straight to the DOM, so React does
  * not re-render per frame. Reduced motion gets the static word.
+ *
+ * A SMOOTH_SURGE event takes over for a set time and plays one full stretch
+ * to the edge of the line and back, on the same loop.
  */
 export default function Smooth() {
   const wrap = useRef<HTMLSpanElement | null>(null);
@@ -32,6 +47,7 @@ export default function Smooth() {
     let lastScroll = window.scrollY;
     let raf = 0;
     let running = true;
+    let surge: { start: number; ms: number } | null = null;
 
     // How many O's fit on this line before the word would wrap.
     const measure = () => {
@@ -58,11 +74,23 @@ export default function Smooth() {
       energy += Math.min(d, 200) * 0.05;
     };
 
+    const onSurge = (e: Event) => {
+      measure();
+      surge = { start: performance.now(), ms: (e as CustomEvent<{ ms?: number }>).detail?.ms ?? 1500 };
+    };
+
     const tick = () => {
       if (!running) return;
       energy *= 0.92; // relax back to four
-      const target = Math.min(cap, BASE + energy);
-      shown += (target - shown) * 0.14;
+      if (surge) {
+        const t = (performance.now() - surge.start) / surge.ms;
+        if (t >= 1) surge = null;
+        else shown = BASE + (cap - BASE) * surgeCurve(t);
+      }
+      if (!surge) {
+        const target = Math.min(cap, BASE + energy);
+        shown += (target - shown) * 0.14;
+      }
       const whole = Math.floor(shown);
       const part = shown - whole;
       os.current.forEach((node, i) => {
@@ -85,7 +113,9 @@ export default function Smooth() {
     window.addEventListener('pointermove', onPointer, { passive: true });
     window.addEventListener('scroll', onScroll, { passive: true });
     window.addEventListener('resize', measure);
+    window.addEventListener(SMOOTH_SURGE, onSurge);
     return () => {
+      window.removeEventListener(SMOOTH_SURGE, onSurge);
       running = false;
       cancelAnimationFrame(raf);
       io.disconnect();
