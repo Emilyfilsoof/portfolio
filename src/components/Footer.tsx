@@ -1,5 +1,6 @@
 import Link from 'next/link';
 import { profile } from '@/data/profile';
+import FooterCv from './FooterCv';
 import styles from './Footer.module.css';
 
 /** Contact: the email at display scale, everything else in mono. */
@@ -25,9 +26,7 @@ export default function Footer() {
             >
               LinkedIn
             </a>
-            <a className={styles.ghost} href={profile.cv.href} target="_blank" rel="noreferrer" data-mag>
-              {profile.cv.label}
-            </a>
+            <FooterCv className={styles.ghost} />
             <a className={styles.ghost} href={`tel:${profile.contact.phoneHref}`} data-mag>
               {profile.contact.phone}
             </a>

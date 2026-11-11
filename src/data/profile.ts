@@ -29,6 +29,10 @@ export const profile = {
     href: '/cv/EmilyFilsoof_CV_2026.pdf',
     label: 'CV 2026 (PDF)',
   },
+  /** Pages that link a CV made for one application instead of the general one. */
+  cvByPath: {
+    '/signifly': { href: '/cv/EmilyFilsoof_CV_CreativeDeveloper.pdf', label: 'CV (PDF)' },
+  } as Record<string, { href: string; label: string }>,
   disciplines: [
     'UX/UI design',
     'Product design',
