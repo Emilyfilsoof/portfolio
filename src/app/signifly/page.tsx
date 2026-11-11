@@ -245,7 +245,6 @@ export default function SigniflyPage() {
                 CV (PDF)
               </a>
             </div>
-            <p className={styles.ctaNote}>Taler og skriver dansk og arbejder gerne på engelsk.</p>
           </div>
           <figure className={styles.ctaPortrait}>
             {/* eslint-disable-next-line @next/next/no-img-element */}
