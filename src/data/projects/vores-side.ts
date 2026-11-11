@@ -9,7 +9,7 @@ export const voresSide: Project = {
   slug: 'vores-side',
   index: '01',
   title: 'Case at Danmarks Radio',
-  subtitle: 'Vores Side — from personalisation to participation',
+  subtitle: 'Vores Side: from personalisation to participation',
   year: '2025',
   context: 'DR · ITU · group project',
   disciplines: ['UX design', 'User research', 'Digital product design'],
@@ -23,21 +23,21 @@ export const voresSide: Project = {
     {
       term: 'My role',
       detail:
-        'Across the full process — user research and interviews, analysis, concept development, iterative prototyping, and how Vores Side would work across DR’s ecosystem',
+        'Across the full process: user research and interviews, analysis, concept development, iterative prototyping, and how Vores Side would work across DR’s ecosystem',
     },
     { term: 'Tools', detail: 'Figma, semi-structured interviews' },
   ],
   field: { accent: '#00e5ff' },
   cover: {
     id: 'dr-cover',
-    src: '/images/dr-cover.png',
+    src: '/images/dr-cover.webp',
     alt: 'Vores Side shown across DRTV, DR LYD and DR Nyheder',
     need: 'Figma export at 2×: the three Vores Side screens side by side (DRTV, DR LYD, DR Nyheder) — report Figure 1.',
     ratio: '16 / 9',
   },
   preview: {
     id: 'dr-preview',
-    src: '/images/dr-preview.png',
+    src: '/images/dr-preview.webp',
     alt: 'Vores Side weekly theme screen',
     need: 'Figma export at 2× of the Vores Side weekly-theme screen on DRTV, cropped to the top half.',
     ratio: '4 / 3',
@@ -61,7 +61,7 @@ export const voresSide: Project = {
         label: 'What we asked instead',
         paragraphs: [
           'How might DR use its existing login solution to strengthen digital cohesion across its main platforms, while also making the login experience feel valuable and engaging for users?',
-          'That moved the project from interface optimisation to a public-service question. Login is the point where a licence-funded institution asks something of a citizen — so it has to give something back that a commercial platform would not.',
+          'That moved the project from interface optimisation to a public-service question. Login is the point where a licence-funded institution asks something of a citizen, so it has to give something back that a commercial platform would not.',
         ],
       },
     },
@@ -70,8 +70,8 @@ export const voresSide: Project = {
       label: 'Research',
       heading: 'Two expert interviews at DR, twenty-five with its users',
       paragraphs: [
-        'We interviewed DR’s Product Manager, who described login as underused and often experienced as annoying, and later DR’s Media Analyst, who explained how little DR knows about users who are not logged in — and how carefully DR has to handle data as a non-commercial institution.',
-        'In parallel we ran semi-structured interviews with 25 people aged 18–30, DR’s stated target group, about their media habits and their view of the login. The dominant response to logging in was irritation: DR had always been freely available, so why the gate?',
+        'We interviewed DR’s Product Manager, who described login as underused and often experienced as annoying, and later DR’s Media Analyst, who explained how little DR knows about users who are not logged in, and how carefully DR has to handle data as a non-commercial institution.',
+        'In parallel we ran semi-structured interviews with 25 people aged 18 to 30, DR’s stated target group, about their media habits and their view of the login. The dominant response to logging in was irritation: DR had always been freely available, so why the gate?',
         'The second finding was the one that redirected the project. Users did not want personalisation from DR at all.',
       ],
     },
@@ -83,7 +83,7 @@ export const voresSide: Project = {
     },
     {
       kind: 'quote',
-      text: 'If DR starts recommending things, you get put in a box — and that’s dangerous for public service.',
+      text: 'If DR starts recommending things, you get put in a box, and that’s dangerous for public service.',
       attribution: 'User interview participant',
       original:
         'Hvis DR begynder at anbefale ting, bliver man sat i en kasse, og det er farligt for public service.',
@@ -93,8 +93,8 @@ export const voresSide: Project = {
       label: 'The turn',
       heading: 'From Min Side to Vores Side',
       paragraphs: [
-        'Our early concepts had circled around Min Side — my page — because that is the shape personalisation usually takes. The interviews made that direction untenable: people were explicitly asking DR not to behave like Netflix.',
-        'So the concept became collective rather than individual. Vores Side — our page — is a shared space reached through login, where content is organised around a weekly theme that users vote on, and where the same space appears inside all three apps.',
+        'Our early concepts had circled around Min Side (my page), because that is the shape personalisation usually takes. The interviews made that direction untenable: people were explicitly asking DR not to behave like Netflix.',
+        'So the concept became collective rather than individual. Vores Side (our page) is a shared space reached through login, where content is organised around a weekly theme that users vote on, and where the same space appears inside all three apps.',
       ],
     },
     {
@@ -102,7 +102,7 @@ export const voresSide: Project = {
       label: 'The concept',
       asset: {
         id: 'dr-vores-side-three-platforms',
-        src: '/images/dr-vores-side-three-platforms.png',
+        src: '/images/dr-vores-side-three-platforms.webp',
         alt: 'Vores Side on DRTV, DR LYD and DR Nyheder',
         need: 'Figma export at 2× of report Figure 1 — Vores Side on all three platforms, each in its own platform colour.',
         ratio: '16 / 9',
@@ -117,7 +117,7 @@ export const voresSide: Project = {
         {
           term: 'Weekly theme',
           detail:
-            'The top of the page carries the current theme and one featured piece of content that anchors it — for example a climate theme drawing together articles, documentaries and podcasts.',
+            'The top of the page carries the current theme and one featured piece of content that anchors it, for example a climate theme drawing together articles, documentaries and podcasts.',
         },
         {
           term: 'Voting',
@@ -127,7 +127,7 @@ export const voresSide: Project = {
         {
           term: 'Quiz',
           detail:
-            'A short quiz on the theme — a low-stakes way in, and a focal point that makes the theme something to talk about.',
+            'A short quiz on the theme: a low-stakes way in, and a focal point that makes the theme something to talk about.',
         },
         {
           term: 'Cross-platform teasers',
@@ -137,7 +137,7 @@ export const voresSide: Project = {
         {
           term: 'Feedback',
           detail:
-            'Emoji reactions, yes/no polls and comment fields — available to logged-in users only, which is where the value of logging in becomes concrete. It answers DR’s own wish for qualitative feedback.',
+            'Emoji reactions, yes/no polls and comment fields, available to logged-in users only, which is where the value of logging in becomes concrete. It answers DR’s own wish for qualitative feedback.',
         },
       ],
     },
@@ -148,7 +148,7 @@ export const voresSide: Project = {
       assets: [
         {
           id: 'dr-teasers',
-          src: '/images/dr-teasers.png',
+          src: '/images/dr-teasers.webp',
           alt: 'Cross-platform teaser components',
           need: 'Figma export at 2× of report Figure 2 — the cross-platform teaser components.',
           ratio: '1762 / 1364',
@@ -157,7 +157,7 @@ export const voresSide: Project = {
         },
         {
           id: 'dr-feedback',
-          src: '/images/dr-feedback.png',
+          src: '/images/dr-feedback.webp',
           alt: 'Feedback page with reactions, polls and comments',
           need: 'Figma export at 2× of report Figure 3 — the DR feedback page.',
           ratio: '764 / 1422',
@@ -172,14 +172,14 @@ export const voresSide: Project = {
       left: {
         label: 'Before',
         paragraphs: [
-          'A technical gate. It saves your place and unlocks some content, and it explains nothing about why it exists — which is exactly how our participants described it.',
+          'A technical gate. It saves your place and unlocks some content, and it explains nothing about why it exists, which is exactly how our participants described it.',
         ],
       },
       right: {
         label: 'After',
         paragraphs: [
           '“Log ind med et formål – ikke kun adgang. Log ind for at deltage, dele din mening og finde indhold, der betyder noget.”',
-          '“Login with purpose — not just access. Log in to engage, share your opinion, and discover content that matters.” No new functionality: a rewritten screen that makes what follows legible.',
+          '“Login with purpose, not just access. Log in to engage, share your opinion, and discover content that matters.” No new functionality: a rewritten screen that makes what follows legible.',
         ],
       },
     },
@@ -187,7 +187,7 @@ export const voresSide: Project = {
       kind: 'figure',
       asset: {
         id: 'dr-login',
-        src: '/images/dr-login.png',
+        src: '/images/dr-login.webp',
         alt: 'Redesigned DR login screen',
         need: 'Figma export at 2× of report Figure 4 — the redesigned login screen. If the original DR login screenshot exists, supply it too so the pair can be shown side by side.',
         ratio: '2034 / 1468',
@@ -206,7 +206,7 @@ export const voresSide: Project = {
       label: 'Evaluation',
       heading: 'Four sessions, and a pitch to DR',
       paragraphs: [
-        'The prototype was tested with four users aged 18–30: task-based usability first, then a short interview about motivation and perceived value. Navigation held up — the interface relies only on scrolling and tapping, and participants found the voting mechanism immediately.',
+        'The prototype was tested with four users aged 18 to 30: task-based usability first, then a short interview about motivation and perceived value. Navigation held up: the interface relies only on scrolling and tapping, and participants found the voting mechanism immediately.',
         'The concept landed as intended. Participants described logging in as taking part rather than being counted, and said the experience would make them more likely to return. We then presented Vores Side to DR with a walkthrough of the prototype.',
       ],
     },
@@ -220,7 +220,7 @@ export const voresSide: Project = {
       label: 'What it required',
       heading: 'The organisational condition we could not design away',
       paragraphs: [
-        'Vores Side only works if DR acts on what users send back. Login currently sits with product and data teams; weekly themes, voting and feedback need editorial ownership as well, and a definition of engagement that is not clicks. We said so in the report rather than presenting the concept as self-sufficient — participation that is never answered is decoration.',
+        'Vores Side only works if DR acts on what users send back. Login currently sits with product and data teams; weekly themes, voting and feedback need editorial ownership as well, and a definition of engagement that is not clicks. We said so in the report rather than presenting the concept as self-sufficient. Participation that is never answered is decoration.',
       ],
     },
     {
@@ -230,7 +230,7 @@ export const voresSide: Project = {
       methods: [
         'Desk research on DR’s 2025 strategy',
         '2 expert interviews (Product Manager, Media Analyst)',
-        '25 semi-structured user interviews, ages 18–30',
+        '25 semi-structured user interviews, ages 18 to 30',
         '6-3-5 brainwriting',
         'Sketching and iterative Figma prototyping',
         'Usability testing and qualitative evaluation with 4 users',

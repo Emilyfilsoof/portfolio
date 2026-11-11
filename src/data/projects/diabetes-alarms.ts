@@ -28,20 +28,20 @@ export const diabetesAlarms: Project = {
       detail:
         'Workshop planning and facilitation, analysis and synthesis of participant insights, ideation, alarm concepts, physical prototyping and documentation',
     },
-    { term: 'Participants', detail: 'Three women aged 20–30 living with Type 1 diabetes' },
+    { term: 'Participants', detail: 'Three women aged 20 to 30 living with Type 1 diabetes' },
     { term: 'Output', detail: 'A physical catalogue of seven context-based alarms' },
   ],
   field: { accent: '#00e5ff' },
   cover: {
     id: 'alarms-cover',
-    src: '/images/alarms-cover.png',
+    src: '/images/alarms-cover.webp',
     alt: 'The printed catalogue of context-based alarms',
     need: 'Photographs of the physical catalogue — cover and one open spread. Article Figure 1 is the fallback.',
     ratio: '16 / 9',
   },
   preview: {
     id: 'alarms-preview',
-    src: '/images/alarms-preview.png',
+    src: '/images/alarms-preview.webp',
     alt: 'One of the seven alarm prototypes',
     need: 'One clean photograph of a single alarm prototype — DeskCue’s cup or GlowCue’s light work best as a preview.',
     ratio: '4 / 3',
@@ -49,7 +49,7 @@ export const diabetesAlarms: Project = {
   blocks: [
     {
       kind: 'lead',
-      text: 'Around 35,000 people in Denmark live with Type 1 diabetes. Continuous glucose monitors keep them safe and alarm them at critical levels — in lectures, at dinner, asleep next to someone. We asked what an alarm could be instead.',
+      text: 'Around 35,000 people in Denmark live with Type 1 diabetes. Continuous glucose monitors keep them safe and alarm them at critical levels: in lectures, at dinner, asleep next to someone. We asked what an alarm could be instead.',
     },
     {
       kind: 'prose',
@@ -57,7 +57,7 @@ export const diabetesAlarms: Project = {
       heading: 'The alarm is necessary. Its modality is not.',
       paragraphs: [
         'CGM alarms warn through sound, vibration and notification, and they arrive whether or not the situation allows for them. Frequent or irrelevant alarms produce alarm fatigue, which leads people to ignore or switch off alarms that matter.',
-        'Existing technology follows a biomedical logic: the user adapts to the device. Our participants live between that logic and two others — the bodily and the social — and the alarms are where the three collide.',
+        'Existing technology follows a biomedical logic: the user adapts to the device. Our participants live between that logic and two others, the bodily and the social, and the alarms are where the three collide.',
       ],
     },
     {
@@ -79,8 +79,8 @@ export const diabetesAlarms: Project = {
       label: 'Method',
       heading: 'Three future workshops, one participant at a time',
       paragraphs: [
-        'We invited three women aged 20–30 who have lived with Type 1 diabetes for years and use CGM, and ran individual hour-long sessions in the future workshop format: critique, dream, design.',
-        'The materials were built from existing research on the tensions of everyday life with CGM — statements to select from, symbols, situation cards, and prepared “what if” questions: what if you got no notifications? what if the technology were caring? what if it took account of the situation you were in?',
+        'We invited three women aged 20 to 30 who have lived with Type 1 diabetes for years and use CGM, and ran individual hour-long sessions in the future workshop format: critique, dream, design.',
+        'The materials were built from existing research on the tensions of everyday life with CGM: statements to select from, symbols, situation cards, and prepared “what if” questions: what if you got no notifications? what if the technology were caring? what if it took account of the situation you were in?',
         'The sessions differed sharply. One participant worked visually and built an ideal future out of the symbols; another found radical imagining difficult and moved to dialogue, which produced concrete improvements to existing technology instead. Both were useful, and adapting mid-session was part of the method rather than a failure of it.',
       ],
     },
@@ -91,14 +91,14 @@ export const diabetesAlarms: Project = {
       assets: [
         {
           id: 'alarms-workshop-material',
-          src: '/images/alarms-workshop-material.png',
+          src: '/images/alarms-workshop-material.webp',
           alt: 'Statements, symbols and situation cards used in the workshops',
           need: 'Photographs of the physical workshop material: statement cards, emoji/symbol set, situation images, the “what if” cards (process report Appendix 1).',
           ratio: '4 / 3',
         },
         {
           id: 'alarms-affinity',
-          src: '/images/alarms-affinity.png',
+          src: '/images/alarms-affinity.webp',
           alt: 'Affinity diagram of insights from the three sessions',
           need: 'Photograph of the affinity diagramming wall — post-its grouped under headings.',
           ratio: '4 / 3',
@@ -110,17 +110,17 @@ export const diabetesAlarms: Project = {
       label: 'Analysis',
       heading: 'Three themes',
       paragraphs: [
-        '(In)visibility. All three participants picked the same statement as most recognisable: that people do not understand the invisible work of keeping diabetes in check, and that it can feel lonely. But visibility cuts both ways — they also want the condition to take up as little room as possible.',
-        'Context. Some situations make a piercing alarm impossible: a lecture hall, a theatre, a meeting. Since the alarms cannot be tuned to the situation, the phone gets switched off entirely — with real clinical risk.',
+        '(In)visibility. All three participants picked the same statement as most recognisable: that people do not understand the invisible work of keeping diabetes in check, and that it can feel lonely. But visibility cuts both ways: they also want the condition to take up as little room as possible.',
+        'Context. Some situations make a piercing alarm impossible: a lecture hall, a theatre, a meeting. Since the alarms cannot be tuned to the situation, the phone gets switched off entirely, with real clinical risk.',
         'Modality. Being alerted is not the problem. Being alerted with sound, in front of everyone, is. That reframing is what the catalogue answers.',
       ],
     },
     {
       kind: 'quote',
-      text: 'I’d rather it lit up instead of beeping — then people can choose for themselves whether to ask about it.',
+      text: 'I’d rather it lit up instead of beeping. Then people can choose for themselves whether to ask about it.',
       attribution: 'Participant 2',
       original:
-        'Jeg ville hellere have, at den lyste i stedet for at bippe – så kan folk selv vælge, om de vil spørge ind til det.',
+        'Jeg ville hellere have, at den lyste i stedet for at bippe, så kan folk selv vælge, om de vil spørge ind til det.',
     },
     {
       kind: 'list',
@@ -166,8 +166,8 @@ export const diabetesAlarms: Project = {
       heading: 'Seven alarms, one visual system',
       paragraphs: [
         'Seven, not one. The catalogue deliberately refuses a universal solution: it treats context as something negotiated in practice, and offers significantly different designs so that different people, in different rooms, can find one that fits.',
-        'The physical catalogue became more than documentation of the concepts. Its graphic language — colour, typography, composition and contextual imagery — brings seven very different alarm behaviours into one coherent design system. Each concept is presented in the situation it was designed for, making the catalogue itself part of how the design argument is communicated.',
-        'GlowCue runs against the grain of the others. Where most concepts work by making the alarm less conspicuous, it makes monitoring visible and shared — holding onto the tension between visibility and invisibility that emerged in the workshops.',
+        'The physical catalogue became more than documentation of the concepts. Its graphic language (colour, typography, composition and contextual imagery) brings seven very different alarm behaviours into one coherent design system. Each concept is presented in the situation it was designed for, making the catalogue itself part of how the design argument is communicated.',
+        'GlowCue runs against the grain of the others. Where most concepts work by making the alarm less conspicuous, it makes monitoring visible and shared, holding onto the tension between visibility and invisibility that emerged in the workshops.',
       ],
     },
     {
@@ -175,7 +175,7 @@ export const diabetesAlarms: Project = {
       label: 'Catalogue overview',
       asset: {
         id: 'alarms-catalogue-overview',
-        src: '/images/alarms-catalogue-overview.png',
+        src: '/images/alarms-catalogue-overview.webp',
         alt: 'Overview of the visual catalogue presenting the seven context-based alarm concepts',
         need: 'Overview of the final alarm catalogue.',
         ratio: '2315 / 1638',
@@ -189,21 +189,21 @@ export const diabetesAlarms: Project = {
       assets: [
         {
           id: 'alarms-concept-nightcue',
-          src: '/images/alarms-concept-nightcue.png',
+          src: '/images/alarms-concept-nightcue.webp',
           alt: 'NightCue catalogue concept for a home and sleep context',
           need: 'NightCue catalogue concept.',
           ratio: '2315 / 1638',
         },
         {
           id: 'alarms-concept-deskcue',
-          src: '/images/alarms-concept-deskcue.png',
+          src: '/images/alarms-concept-deskcue.webp',
           alt: 'DeskCue catalogue concept for work and study contexts',
           need: 'DeskCue catalogue concept.',
           ratio: '2315 / 1638',
         },
         {
           id: 'alarms-concept-glowcue',
-          src: '/images/alarms-concept-glowcue.png',
+          src: '/images/alarms-concept-glowcue.webp',
           alt: 'GlowCue catalogue concept for social contexts',
           need: 'GlowCue catalogue concept.',
           ratio: '2315 / 1638',
@@ -217,14 +217,14 @@ export const diabetesAlarms: Project = {
       assets: [
         {
           id: 'alarms-cover',
-          src: '/images/alarms-cover.png',
+          src: '/images/alarms-cover.webp',
           alt: 'Cover of the printed alarm catalogue',
           need: 'Photograph of the printed catalogue cover.',
           ratio: '793 / 814',
         },
         {
           id: 'alarms-catalogue-spread',
-          src: '/images/alarms-catalogue-spread.png',
+          src: '/images/alarms-catalogue-spread.webp',
           alt: 'Open spread from the printed alarm catalogue',
           need: 'Photograph of an open catalogue spread.',
           ratio: '1258 / 1072',
@@ -247,21 +247,21 @@ export const diabetesAlarms: Project = {
       assets: [
         {
           id: 'alarms-process-electronics-setup',
-          src: '/images/alarms-process-electronics-setup.jpg',
+          src: '/images/alarms-process-electronics-setup.webp',
           alt: 'Electronics setup used while developing the alarm prototypes',
           need: 'Process photograph of the electronics setup.',
           ratio: '3 / 4',
         },
         {
           id: 'alarms-process-physical-computing',
-          src: '/images/alarms-process-physical-computing.jpg',
+          src: '/images/alarms-process-physical-computing.webp',
           alt: 'Physical computing alarm prototype in development',
           need: 'Process photograph of the physical computing prototype.',
           ratio: '3 / 4',
         },
         {
           id: 'alarms-process-light-prototype',
-          src: '/images/alarms-process-light-prototype.jpg',
+          src: '/images/alarms-process-light-prototype.webp',
           alt: 'Light-based alarm prototype in development',
           need: 'Process photograph of the light prototype.',
           ratio: '3 / 4',
@@ -274,15 +274,15 @@ export const diabetesAlarms: Project = {
       heading: 'The Expo, and the objections',
       paragraphs: [
         'We showed the catalogue at the ITU Expo alongside an interactive prototype of one alarm, collected written feedback from visitors, and did a semi-structured walkthrough of the catalogue with one of our co-design participants.',
-        'What worked: the invisibility of the alarms, which matched our participant’s wish to remain invisibly ill, and the situational adaptation, which she thought could genuinely reduce stress. DeskCue was singled out — “it would be a hit at my work at the Danish Diabetes Association”. Expo visitors read the approach as ambient and slow technology.',
-        'What did not: constant visual signals risk becoming a new layer of stress, and some designs have a learning curve — how would FeatherCue distinguish high from low blood sugar? Visitors also asked whether people would remember to bring the alarms with them, and whether so many options would overwhelm. We reported those objections rather than resolving them; the catalogue is a proof of concept and a frame for further work, not a finished product.',
+        'What worked: the invisibility of the alarms, which matched our participant’s wish to remain invisibly ill, and the situational adaptation, which she thought could genuinely reduce stress. DeskCue was singled out: “it would be a hit at my work at the Danish Diabetes Association”. Expo visitors read the approach as ambient and slow technology.',
+        'What did not: constant visual signals risk becoming a new layer of stress, and some designs have a learning curve. How would FeatherCue distinguish high from low blood sugar? Visitors also asked whether people would remember to bring the alarms with them, and whether so many options would overwhelm. We reported those objections rather than resolving them; the catalogue is a proof of concept and a frame for further work, not a finished product.',
       ],
     },
     {
       kind: 'credits',
       role: 'I contributed throughout the participatory design process: workshop planning and facilitation, analysis and synthesis of participant insights, ideation, development of alternative alarm concepts, physical prototyping, and documentation of the final design proposals.',
       context:
-        'Group of four — Mai Engelbrecht Pilegaard, Emily Rose Shereen Filsoof, Jacob Tærsker Adelholm and Amalie Christine Bagger. Advanced Design Processes, IT University of Copenhagen, December 2024.',
+        'Group of four: Mai Engelbrecht Pilegaard, Emily Rose Shereen Filsoof, Jacob Tærsker Adelholm and Amalie Christine Bagger. Advanced Design Processes, IT University of Copenhagen, December 2024.',
       methods: [
         'Interaction criticism of existing CGM alarms',
         'Future workshops (critique, dream, design) with three participants',

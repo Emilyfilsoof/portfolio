@@ -24,6 +24,10 @@ every change.
 - Animations run on one `requestAnimationFrame` loop that writes to the DOM
   directly, and pause when off screen. No per-frame React re-renders.
 - No new dependencies without a reason Emily agrees with.
+- Images in `public/images` are WebP, at most 2000px wide. Measure page weight
+  after adding any; a case page should stay well under 3 MB on mobile.
+- Fonts are self-hosted from `public/fonts`. No requests to third-party font
+  or analytics hosts.
 
 ## Writing
 

@@ -20,14 +20,14 @@ export const breathingTheCity: Project = {
     { term: 'Year', detail: '2026' },
     { term: 'Context', detail: 'MSc thesis, Digital Design and Interactive Technologies, ITU' },
     { term: 'Supervisor', detail: 'Vasiliki Tsaknaki' },
-    { term: 'Work', detail: 'Individual — design, making, deployment and analysis' },
+    { term: 'Work', detail: 'Individual: design, making, deployment and analysis' },
     { term: 'Approach', detail: 'Research through Design, autobiographical inquiry, situated deployment' },
     { term: 'Materials', detail: 'Deadstock cotton, elastic' },
   ],
   field: { accent: '#00e5ff' },
   cover: {
     id: 'btc-cover',
-    src: '/images/btc-cover.png',
+    src: '/images/btc-cover.webp',
     alt: 'The hand-sewn low-fidelity breathing mask',
     need: 'A proper photograph of the finished mask — ideally a new studio shot against a plain ground. Thesis Figure 6 (right) is the fallback.',
     ratio: '16 / 9',
@@ -54,7 +54,7 @@ export const breathingTheCity: Project = {
       heading: 'My own runs, as the first site of inquiry',
       paragraphs: [
         'I run the loop around Peblinge Sø like a lot of people in Copenhagen. The project began there, with three autobiographical runs under different conditions of traffic, weather and crowding, and in-situ notes taken immediately afterwards.',
-        'Two patterns came out of them. Running produces a kind of mental bubble: attention goes to pace, breath and route, and the surroundings recede. And the water produces an illusion of fresh air — the visual openness of the lakeside reads as freshness whether or not the air is any better. Two short interviews with other runners on the same route showed the same orientation, so it was not only mine.',
+        'Two patterns came out of them. Running produces a kind of mental bubble: attention goes to pace, breath and route, and the surroundings recede. And the water produces an illusion of fresh air: the visual openness of the lakeside reads as freshness whether or not the air is any better. Two short interviews with other runners on the same route showed the same orientation, so it was not only mine.',
       ],
     },
     {
@@ -64,7 +64,7 @@ export const breathingTheCity: Project = {
       assets: [
         {
           id: 'btc-scarf-thick',
-          src: '/images/btc-scarf-thick.png',
+          src: '/images/btc-scarf-thick.webp',
           alt: 'Thick wool scarf pulled over mouth and nose',
           need: 'Thesis Figure 3, first variation — the thick wool scarf, at original resolution.',
           ratio: '446 / 918',
@@ -73,7 +73,7 @@ export const breathingTheCity: Project = {
         },
         {
           id: 'btc-scarf-thin',
-          src: '/images/btc-scarf-thin.png',
+          src: '/images/btc-scarf-thin.webp',
           alt: 'Thin silk-cotton scarf variation',
           need: 'Thesis Figure 3, second variation — the thin silk/cotton scarf.',
           ratio: '450 / 924',
@@ -82,7 +82,7 @@ export const breathingTheCity: Project = {
         },
         {
           id: 'btc-scarf-intermittent',
-          src: '/images/btc-scarf-intermittent.png',
+          src: '/images/btc-scarf-intermittent.webp',
           alt: 'Diagram of the intermittent scarf variation',
           need: 'Thesis Figure 3, third variation — the diagram of the intermittent variation.',
           ratio: '504 / 928',
@@ -111,14 +111,14 @@ export const breathingTheCity: Project = {
       assets: [
         {
           id: 'btc-design-space',
-          src: '/images/btc-design-space.png',
+          src: '/images/btc-design-space.webp',
           alt: 'Annotated design space of eight mask variations',
           need: 'Thesis Figure 4 — the annotated design space of eight mask variations, at original resolution or as vector.',
           ratio: '1486 / 1767',
         },
         {
           id: 'btc-materials',
-          src: '/images/btc-materials.png',
+          src: '/images/btc-materials.webp',
           alt: 'Material exploration at a fabric shop',
           need: 'Thesis Figure 5 — the fabric-shop material exploration photographs.',
           ratio: '2048 / 1058',
@@ -138,14 +138,14 @@ export const breathingTheCity: Project = {
       assets: [
         {
           id: 'btc-mesh-abandoned',
-          src: '/images/btc-mesh-abandoned.png',
+          src: '/images/btc-mesh-abandoned.webp',
           alt: 'The abandoned mesh panel',
           need: 'Thesis Figure 6 (left) — the abandoned mesh panel intended for the nose area.',
           ratio: '1 / 1',
         },
         {
           id: 'btc-mask-finished',
-          src: '/images/btc-mask-finished.png',
+          src: '/images/btc-mask-finished.webp',
           alt: 'The finished low-fidelity breathing mask',
           need: 'Thesis Figure 6 (right) — the finished mask. A new studio photograph would be better.',
           ratio: '1 / 1',
@@ -155,7 +155,7 @@ export const breathingTheCity: Project = {
     {
       kind: 'list',
       label: 'The intervention',
-      heading: 'The Atmospheric Interface — a five-part kit',
+      heading: 'The Atmospheric Interface: a five-part kit',
       items: [
         {
           term: 'Breathing mask',
@@ -187,7 +187,7 @@ export const breathingTheCity: Project = {
       kind: 'figure',
       asset: {
         id: 'btc-kit',
-        src: '/images/btc-kit.png',
+        src: '/images/btc-kit.webp',
         alt: 'The Atmospheric Interface kit laid out',
         need: 'Thesis Figure 7 — the full kit laid out, and the assembled kit. Both, if you have them.',
         ratio: '2048 / 843',
@@ -198,14 +198,14 @@ export const breathingTheCity: Project = {
       kind: 'split',
       label: 'Two protocols, one variable',
       left: {
-        label: 'Protocol 1 — aligned',
+        label: 'Protocol 1 · aligned',
         paragraphs: [
           'Restricted breathing at the traffic-heavy bridges, easier nasal breathing at the water. Breathing matched the atmospheric character of each zone.',
           'Removing the mouth as a habitual backup channel worked: none of the four participants had noticed how much they relied on it. The nose became a passage where temperature and rhythm registered, and the water-adjacent air became something breathed rather than an idea about a place.',
         ],
       },
       right: {
-        label: 'Protocol 2 — reversed',
+        label: 'Protocol 2 · reversed',
         paragraphs: [
           'Same route, same mask, same instruction card. Only the colouring of the map was inverted, so restriction arrived at the water and ease at the traffic. The manipulation sat in the map, not in the instruction.',
           'This produced a conflict Protocol 1 could not: the visual field opened at the water while the breathing body was constrained. All four participants described the split, and in describing it, discovered an expectation they had never articulated.',
@@ -217,7 +217,7 @@ export const breathingTheCity: Project = {
       label: 'The two maps differ only in colour',
       asset: {
         id: 'btc-route-maps',
-        src: '/images/btc-route-maps.png',
+        src: '/images/btc-route-maps.webp',
         alt: 'The two zoned route maps of Peblinge Sø',
         need: 'Thesis Figure 8 — both route maps side by side (Protocol 1 and the reversed Protocol 2).',
         ratio: '1292 / 942',
@@ -235,7 +235,7 @@ export const breathingTheCity: Project = {
       heading: 'Bodily ease is not evidence of air quality',
       paragraphs: [
         'The most consequential result came from the traffic zones. When easier nasal breathing arrived at the bridges, the body stopped signalling resistance even though the place itself had not improved. Felt ease and environmental quality came apart.',
-        'Three participants also described becoming less attentive to their surroundings when the body was not challenged. The open nasal channel made smell more present — warm asphalt, exhaust, dust — revealing that easier breathing could coexist with an unpleasant atmosphere.',
+        'Three participants also described becoming less attentive to their surroundings when the body was not challenged. The open nasal channel made smell more present (warm asphalt, exhaust, dust), revealing that easier breathing could coexist with an unpleasant atmosphere.',
       ],
     },
     {
@@ -248,7 +248,7 @@ export const breathingTheCity: Project = {
       label: 'Participant documentation',
       asset: {
         id: 'btc-trajectory',
-        src: '/images/btc-trajectory.png',
+        src: '/images/btc-trajectory.webp',
         alt: 'Soma trajectory sheet from Protocol 2',
         need: 'Thesis Figure 11 — the redrawn excerpt of Julie’s soma trajectory sheet, plus one or two original annotated body maps.',
         ratio: '16 / 9',
@@ -289,7 +289,7 @@ export const breathingTheCity: Project = {
         {
           term: 'A critical caution',
           detail:
-            'Feeling that breathing is easy is not evidence that the air is clean — a critical caution for respiratory wearables.',
+            'Feeling that breathing is easy is not evidence that the air is clean. That is a critical caution for respiratory wearables.',
         },
       ],
     },

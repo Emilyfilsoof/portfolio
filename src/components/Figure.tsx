@@ -12,11 +12,15 @@ export default function Figure({
   asset,
   index,
   className = '',
+  priority = false,
 }: {
   asset: Asset;
   index?: number;
   className?: string;
+  /** The cover loads at once; everything further down waits until it is near. */
+  priority?: boolean;
 }) {
+  const loading = priority ? 'eager' : 'lazy';
   const ratio = asset.ratio ?? '4 / 3';
   const dark = asset.tone === 'dark';
   const contained = asset.presentation === 'contained';
@@ -30,11 +34,18 @@ export default function Figure({
             style={{ '--figure-frame-height': `${asset.frameHeight ?? 520}px` } as React.CSSProperties}
           >
             {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img className={styles.containedImg} src={asset.src} alt={asset.alt} />
+            <img className={styles.containedImg} src={asset.src} alt={asset.alt} loading={loading} decoding="async" />
           </div>
         ) : (
           // eslint-disable-next-line @next/next/no-img-element
-          <img className={styles.img} src={asset.src} alt={asset.alt} style={{ aspectRatio: ratio }} />
+          <img
+            className={styles.img}
+            src={asset.src}
+            alt={asset.alt}
+            style={{ aspectRatio: ratio }}
+            loading={loading}
+            decoding="async"
+          />
         )
       ) : (
         <div

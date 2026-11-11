@@ -1,8 +1,9 @@
 import type { CSSProperties } from 'react';
 import type { Metadata } from 'next';
-import Link from 'next/link';
 import { notFound } from 'next/navigation';
+import { pageMeta } from '../../meta';
 import CaseBlocks from '@/components/CaseBlocks';
+import { BackLink, CarryLink } from '@/components/OriginLink';
 import Figure from '@/components/Figure';
 import { getNeighbours, getProject, projects } from '@/data/projects';
 import styles from './case.module.css';
@@ -16,10 +17,7 @@ export function generateStaticParams() {
 export function generateMetadata({ params }: Params): Metadata {
   const project = getProject(params.slug);
   if (!project) return {};
-  return {
-    title: `${project.title} — ${project.subtitle}`,
-    description: project.summary,
-  };
+  return pageMeta({ title: project.title, description: project.summary, path: `/work/${project.slug}` });
 }
 
 export default function CasePage({ params }: Params) {
@@ -50,27 +48,27 @@ export default function CasePage({ params }: Params) {
         <p className={styles.barLabel}>
           {project.index} · {project.title}
         </p>
-        <Link href="/#work" className={styles.barClose}>
+        <BackLink href="/#work" anchor="more" className={styles.barClose}>
           Close ×
-        </Link>
+        </BackLink>
       </div>
 
       <div className={styles.column}>
         <h1 className={styles.title}>{project.subtitle}</h1>
         {lead.length > 0 && <CaseBlocks blocks={lead} />}
-        <Figure asset={project.cover} />
+        <Figure asset={project.cover} priority />
 
         <CaseBlocks blocks={rest} />
 
         <div className={styles.end}>
-          <Link href="/#work" className={styles.back}>
+          <BackLink href="/#work" anchor="more" className={styles.back} originLabel>
             Back to the work
-          </Link>
+          </BackLink>
           {neighbours && (
-            <Link href={`/work/${neighbours.next.slug}`} className={styles.nextLink}>
+            <CarryLink href={`/work/${neighbours.next.slug}`} className={styles.nextLink}>
               <span className={styles.nextLabel}>Next project</span>
               <span className={styles.nextTitle}>{neighbours.next.title}</span>
-            </Link>
+            </CarryLink>
           )}
         </div>
       </div>

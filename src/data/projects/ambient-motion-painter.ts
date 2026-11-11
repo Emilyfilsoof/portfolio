@@ -17,14 +17,14 @@ export const ambientMotionPainter: Project = {
   meta: [
     { term: 'Year', detail: '2025' },
     { term: 'Context', detail: 'Programming Experimental Interactions, ITU' },
-    { term: 'Work', detail: 'Individual — concept, code and visual system' },
+    { term: 'Work', detail: 'Individual: concept, code and visual system' },
     { term: 'Built with', detail: 'p5.js, MQTT (mqtt.min.js), device camera and motion sensors' },
     { term: 'Output', detail: 'Live desktop canvas and clean high-resolution PNG exports' },
   ],
   field: { accent: '#00e5ff', bg: '#0b0b0c', ink: '#f4f2f0' },
   cover: {
     id: 'amp-cover',
-    src: '/images/amp-cover.png',
+    src: '/images/amp-cover.webp',
     alt: 'Generative painting produced by walking through Copenhagen',
     need: 'One full-resolution PNG export — the Nyhavn walk (report Figure 1) works well as the cover.',
     ratio: '16 / 9',
@@ -32,7 +32,7 @@ export const ambientMotionPainter: Project = {
   },
   preview: {
     id: 'amp-preview',
-    src: '/images/amp-preview.png',
+    src: '/images/amp-preview.webp',
     alt: 'Detail of a generative painting',
     need: 'A crop of any full-resolution export, dense enough to read at small size.',
     ratio: '4 / 3',
@@ -52,7 +52,7 @@ export const ambientMotionPainter: Project = {
       label: 'Starting point',
       heading: 'It began as Sky Painter',
       paragraphs: [
-        'The first idea was narrow: the phone samples the colour of the sky and a computer paints brush-like strokes from it. Early camera tests showed the system responded meaningfully to any surrounding light — a lit room, a shadow on a wall, a bright screen — so the sky framing was dropped in favour of ambient colour.',
+        'The first idea was narrow: the phone samples the colour of the sky and a computer paints brush-like strokes from it. Early camera tests showed the system responded meaningfully to any surrounding light, such as a lit room, a shadow on a wall or a bright screen, so the sky framing was dropped in favour of ambient colour.',
         'That reframing opened the design space the rest of the project worked in, and eventually renamed the project.',
       ],
     },
@@ -61,7 +61,7 @@ export const ambientMotionPainter: Project = {
       label: 'Design process',
       asset: {
         id: 'amp-architecture',
-        src: '/images/amp-architecture.png',
+        src: '/images/amp-architecture.webp',
         alt: 'Design process map showing experiments, iterations and critical decisions',
         caption: 'Design process mapping experiments, iterations and critical decisions',
         need: 'Your Figma process map as SVG or 2× PNG.',
@@ -82,12 +82,12 @@ export const ambientMotionPainter: Project = {
         {
           term: 'Transport',
           detail:
-            'One-directional publish–subscribe over MQTT: phone → broker → desktop, with a compact payload of averaged colour, brightness and motion intensity.',
+            'One-directional publish-subscribe over MQTT: phone → broker → desktop, with a compact payload of averaged colour, brightness and motion intensity.',
         },
         {
           term: 'Desktop sketch',
           detail:
-            'A second p5.js sketch that subscribes to the stream and draws one semi-transparent stroke per message onto a persistent canvas — the desktop is the canvas and the temporal memory.',
+            'A second p5.js sketch that subscribes to the stream and draws one semi-transparent stroke per message onto a persistent canvas. The desktop is both the canvas and the temporal memory.',
         },
       ],
     },
@@ -108,7 +108,7 @@ export const ambientMotionPainter: Project = {
       label: 'Process',
       heading: 'Five decisions the material forced',
       paragraphs: [
-        'The project developed through branching experiments rather than a plan. Five decisions did the structural work — each one arrived because the system behaved unexpectedly, not because it was scheduled.',
+        'The project developed through branching experiments rather than a plan. Five decisions did the structural work. Each one arrived because the system behaved unexpectedly, not because it was scheduled.',
       ],
     },
 {
@@ -116,29 +116,29 @@ export const ambientMotionPainter: Project = {
   label: 'Design principles',
   items: [
         {
-          term: '01 — Beyond the sky',
+          term: '01 · Beyond the sky',
           detail:
             'Colour sampling responded to any ambient light, so the concept broadened from Sky Painter to ambient colour mapping.',
         },
         {
-          term: '02 — Dropping particles',
+          term: '02 · Dropping particles',
           detail:
             'Particle systems behaved unpredictably and fought the calm, atmospheric quality I wanted. Committing to layered semi-transparent ellipses gave colour and motion something coherent to act on.',
         },
         {
-          term: '03 — Smoothing the accelerometer',
+          term: '03 · Smoothing the accelerometer',
           detail:
             'Raw accelerationIncludingGravity data produced chaotic visuals. Interpolating between readings and constraining ranges turned motion from raw input into a material that could be shaped.',
         },
         {
-          term: '04 — Renaming the project',
+          term: '04 · Renaming the project',
           detail:
             'The prototype painted rooms, shadows and screens, not the sky. Ambient Motion Painter named what it actually was, and that clarified the interaction design.',
         },
         {
-          term: '05 — A clean export',
+          term: '05 · A clean export',
           detail:
-            'Hiding the interface before saving — a two-frame rendering trick plus hiding the DOM overlays — made the output an exhibitable artwork rather than a screenshot.',
+            'Hiding the interface before saving (a two-frame rendering trick plus hiding the DOM overlays) made the output an exhibitable artwork rather than a screenshot.',
         },
       ],
     },
@@ -161,7 +161,7 @@ export const ambientMotionPainter: Project = {
       assets: [
         {
           id: 'amp-output-nyhavn',
-          src: '/images/amp-output-nyhavn.png',
+          src: '/images/amp-output-nyhavn.webp',
           alt: 'Painting from a walk down Nyhavn, Copenhagen',
           need: 'Full-resolution PNG export — the Nyhavn walk (report Figure 1).',
           ratio: '4 / 3',
@@ -169,7 +169,7 @@ export const ambientMotionPainter: Project = {
         },
         {
           id: 'amp-output-woods',
-          src: '/images/amp-output-woods.png',
+          src: '/images/amp-output-woods.webp',
           alt: 'Painting from a walk in the woods',
           need: 'Full-resolution PNG export — the walk in the woods (report Figure 3).',
           ratio: '4 / 3',
@@ -181,7 +181,7 @@ export const ambientMotionPainter: Project = {
       kind: 'link',
       label: 'Demo',
       href: 'https://youtu.be/RQOrxa74vRQ',
-      text: 'Watch the interaction — a walk, filmed',
+      text: 'Watch the interaction: a walk, filmed',
       note: 'Two minutes. The desktop canvas builds as the phone moves.',
     },
     {
@@ -190,7 +190,7 @@ export const ambientMotionPainter: Project = {
       heading: 'What it does not do',
       paragraphs: [
         'Averaging the camera image reduces detail: the system trades fidelity for atmosphere, deliberately, but it cannot represent. Motion input varies between people and environments, so responsiveness is not consistent.',
-        'There is no explicit state control. Painting begins as soon as camera access is granted, motion becomes active only once motion permissions are given, and the canvas has no reset or undo — every session is irreversible.',
+        'There is no explicit state control. Painting begins as soon as camera access is granted, motion becomes active only once motion permissions are given, and the canvas has no reset or undo. Every session is irreversible.',
         'Next: multiple phones contributing to one shared canvas, richer brush models through shaders or textures, and exposing the mapping parameters during interaction so the expressive space can be explored live.',
       ],
     },
