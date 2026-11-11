@@ -110,9 +110,11 @@ export default function SigniflyPage() {
           <Scramble className="label label-ink" text="01 · Smooth frontend og interaktioner" />
           <h2 className={styles.h2}>
             Alt, der bevæger sig på{' '}
-            <Link href="/" className={styles.inlineLink} data-cursor="Åbn">
+            {/* A full page load on purpose, so the intro plays on the way in. */}
+            {/* eslint-disable-next-line @next/next/no-html-link-for-pages */}
+            <a href="/" className={styles.inlineLink} data-cursor="Åbn">
               emilyfilsoof.com
-            </Link>
+            </a>
             , er bygget fra bunden.
           </h2>
           <p className={styles.note}>Ingen animationsbiblioteker. Respekterer prefers-reduced-motion.</p>
