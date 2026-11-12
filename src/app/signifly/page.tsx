@@ -215,10 +215,11 @@ export default function SigniflyPage() {
               mens man går.
             </span>
           </Link>
-          <Link href="/work/breathing-the-city?fra=signifly" className={styles.moreCard} data-cursor="Open">
-            <span className={styles.moreTitle}>Breathing the City</span>
+          <Link href="/work/diabetes-alarms?fra=signifly" className={styles.moreCard} data-cursor="Open">
+            <span className={styles.moreTitle}>What is an alarm?</span>
             <span className={styles.detail}>
-              Mit speciale: en håndsyet åndedrætsmaske og et feltkit, testet med fire løbere over fire uger.
+              Gruppeprojekt på ITU: alarmer til diabetesteknologi, der tilpasser sig situationen. Udvalgte alarmer er
+              prototypet med lys og Arduino.
             </span>
           </Link>
         </div>
